@@ -3,6 +3,7 @@ Awesome Android tooling! Discover a curated list of top libraries, frameworks, a
 
 ### ADB (Android Debug Bridge)
 A command-line tool that facilitates communication between your development PC and Android devices, enabling debugging and testing. 
+[Detail](https://developer.android.com/tools/adb)
 
 ### AVD Manager
 Allows you to create and manage Android Virtual Devices (AVDs) for testing your app on different devices and screen sizes within the emulator.
