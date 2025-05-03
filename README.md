@@ -2,7 +2,7 @@
 ![Group 1 from Figma](https://github.com/user-attachments/assets/94043874-cea7-49a9-a284-28d8cfa054eb)
 
 
-Awesome Android tooling! Discover a curated list of top libraries, frameworks, and utilities for building, testing, and optimizing your Android apps. Boost your development workflow and app quality with these essential resources.
+Awesome Android tooling! Discover a curated list of tools that can be helpful building, testing, and optimizing your Android apps. Boost your development workflow and app quality with these essential resources.
 
 ---
   
