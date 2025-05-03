@@ -4,6 +4,8 @@
 
 Awesome Android tooling! Discover a curated list of top libraries, frameworks, and utilities for building, testing, and optimizing your Android apps. Boost your development workflow and app quality with these essential resources.
 
+---
+  
 ## Command Line Tools
 The Android SDK is composed of multiple packages that are required for app development. This page lists the most important command-line tools that are available, organized by the packages in which they're delivered.  
 [More Detail](https://developer.android.com/tools)
@@ -52,8 +54,6 @@ bmgr is a shell tool you can use to interact with the Backup Manager on Android 
 [More Detail](https://developer.android.com/tools/d8)
 
 
-
-
 ### dmtracedump
 `dmtracedump` is a tool that generates graphical call-stack diagrams from trace log files. The tool uses the Graphviz Dot utility to create the graphical output, so you need to install Graphviz before running dmtracedump. If you haven't yet generated trace logs and saved them from your connected device to your local machine, go to Generate trace logs by instrumenting your app.  
 [More Detail](https://developer.android.com/tools/dmtracedump)
@@ -95,8 +95,6 @@ Logcat is a command-line tool that dumps a log of system messages including mess
 [More Detail](https://developer.android.com/tools/logcat)
 
 
-
-
 ### mksdcard
 Use the mksdcard tool to create a FAT32 disk image that you can load into emulators running different Android Virtual Devices (AVDs) to simulate the presence of the same SD card in multiple devices.      
 [More Detail](https://developer.android.com/tools/mksdcard)
@@ -131,6 +129,7 @@ From a remote shell to your device or from your host machine, use the sqlite3 co
 `zipalign` is a zip archive alignment tool that helps ensure that all uncompressed files in the archive are aligned relative to the start of the file. This lets the files be accessed directly via mmap(2) , removing the need to copy this data in RAM and reducing your app's memory usage.          
 [More Detail](https://developer.android.com/tools/zipalign)
 
+---
 
 ## Android Studio
 
@@ -179,6 +178,7 @@ A bug report contains device logs, stack traces, and other diagnostic informatio
 Android Studio includes an APK Analyzer that provides immediate insight into the composition of your APK or Android App Bundle after the build process completes. Using the APK Analyzer can reduce the time you spend debugging issues with DEX files and resources within your app and help reduce your APK size. The APK Analyzer is also available from the command line with `apkanalyzer`.  
 [More Detail](https://developer.android.com/studio/debug/apk-analyzer)
 
+---
 
 ## Jetpack Compose
 ### Preview UI
@@ -209,10 +209,11 @@ Inspect Compose UI for accessibility and adaptive issues.
 Trace your composable functions in a system trace.   
 [More Detail](https://developer.android.com/develop/ui/compose/tooling/tracing)
 
-### Relay (Design tp code)
+### Relay (Design to code)
 Provide instant handoff of Android UI components between designers and developers. Designers can package up UI Components with information about layout, styling, dynamic content and interaction behavior. Developers can import those packages and convert them to Jetpack Compose code.   
 [More Detail](https://developer.android.com/develop/ui/compose/tooling/relay)
 
+---
 
 ## How to Contribute
 
