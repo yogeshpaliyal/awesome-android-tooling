@@ -1,4 +1,8 @@
 # Awesome-android-tooling
+
+![Vibrant Illustration for GitHub Repo](https://github.com/user-attachments/assets/da541d1d-a2cf-477b-85b6-de70ad91ce18)
+
+
 Awesome Android tooling! Discover a curated list of top libraries, frameworks, and utilities for building, testing, and optimizing your Android apps. Boost your development workflow and app quality with these essential resources.
 
 ## Command Line Tools
