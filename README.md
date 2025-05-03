@@ -2,8 +2,6 @@
 ![Group 1 from Figma](https://github.com/user-attachments/assets/94043874-cea7-49a9-a284-28d8cfa054eb)
 
 
-
-
 Awesome Android tooling! Discover a curated list of top libraries, frameworks, and utilities for building, testing, and optimizing your Android apps. Boost your development workflow and app quality with these essential resources.
 
 ## Command Line Tools
@@ -180,6 +178,40 @@ A bug report contains device logs, stack traces, and other diagnostic informatio
 ### APK Analyzer
 Android Studio includes an APK Analyzer that provides immediate insight into the composition of your APK or Android App Bundle after the build process completes. Using the APK Analyzer can reduce the time you spend debugging issues with DEX files and resources within your app and help reduce your APK size. The APK Analyzer is also available from the command line with `apkanalyzer`.  
 [More Detail](https://developer.android.com/studio/debug/apk-analyzer)
+
+
+## Jetpack Compose
+### Preview UI
+Preview, organize, and interact with composables.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/previews)
+
+### Preview Animation
+Inspect, debug, and preview animations frame by frame.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/animation-preview)
+
+### Live Edit
+Apply changes and see them in real time without doing full builds.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/iterative-development)
+
+### Editor actions
+Use templates, gutter icons, and more in the Android Studio editor window.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/editor-actions)
+
+### Compose Layout Inspector
+Inspect a Compose layout in an emulator or physical device.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/debug#layout_inspector)
+
+### Compose UI Check
+Inspect Compose UI for accessibility and adaptive issues.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/debug#compose_ui_check)
+
+### Composition Tracing
+Trace your composable functions in a system trace.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/tracing)
+
+### Relay (Design tp code)
+Provide instant handoff of Android UI components between designers and developers. Designers can package up UI Components with information about layout, styling, dynamic content and interaction behavior. Developers can import those packages and convert them to Jetpack Compose code.   
+[More Detail](https://developer.android.com/develop/ui/compose/tooling/relay)
 
 
 ## How to Contribute
