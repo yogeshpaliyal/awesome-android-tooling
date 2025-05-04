@@ -1,0 +1,232 @@
+{
+  "tools": [
+    {
+      "name": "ADB (Android Debug Bridge)",
+      "description": "A command-line tool that facilitates communication between your development PC and Android devices, enabling debugging and testing.",
+      "link": "https://developer.android.com/tools/adb",
+      "tags": ["command-line", "debugging", "testing", "device-communication"]
+    },
+    {
+      "name": "AAPT2",
+      "description": "AAPT2 (Android Asset Packaging Tool) is a build tool that Android Studio and Android Gradle Plugin use to compile and package your app's resources. AAPT2 parses, indexes, and compiles the resources into a binary format that is optimized for the Android platform.",
+      "link": "https://developer.android.com/tools/aapt2",
+      "tags": ["command-line", "build", "resources", "packaging"]
+    },
+    {
+      "name": "apkanalyzer",
+      "description": "The command-line version of APK Analyzer provides immediate insight into the composition of your APK after the build process completes and lets you compare differences between two APKs. Using APK Analyzer reduces the time you spend debugging issues with DEX files and resources within your app and reduces the size of your APK.",
+      "link": "https://developer.android.com/tools/apkanalyzer",
+      "tags": ["command-line", "apk", "debugging", "analysis"]
+    },
+    {
+      "name": "apksigner",
+      "description": "The apksigner tool, available in revision 24.0.3 and higher of the Android SDK Build Tools, lets you sign APKs and confirm that an APK's signature will be verified successfully on all versions of the Android platform supported by that APK.",
+      "link": "https://developer.android.com/tools/apksigner",
+      "tags": ["command-line", "apk", "signing", "security"]
+    },
+    {
+      "name": "avdmanager",
+      "description": "The avdmanager is a command-line tool that lets you create and manage Android Virtual Devices (AVDs) from the command line. An AVD lets you define the characteristics of an Android handset, Wear OS watch, or Android TV device that you want to simulate in the Android Emulator.",
+      "link": "https://developer.android.com/tools/avdmanager",
+      "tags": ["command-line", "emulator", "virtual-device", "testing"]
+    },
+    {
+      "name": "bmgr",
+      "description": "bmgr is a shell tool you can use to interact with the Backup Manager on Android devices version 2.2 (API Level 8) or higher. The tool provides commands to initiate backup and restore operations so that you don't need to repeatedly wipe data or take similar intrusive steps in order to test your application's backup functionality. The bmgr tool supports both Auto Backup and Key/Value Backup.",
+      "link": "https://developer.android.com/tools/bmgr",
+      "tags": ["command-line", "backup", "testing", "data-management"]
+    },
+    {
+      "name": "bundletool",
+      "description": "bundletool is the underlying tool that Android Studio, the Android Gradle plugin, and Google Play use to build an Android App Bundle. bundletool can convert an app bundle into the various APKs that are deployed to devices.",
+      "link": "https://developer.android.com/tools/bundletool",
+      "tags": ["command-line", "app-bundle", "deployment", "packaging"]
+    },
+    {
+      "name": "d8",
+      "description": "d8 is a command-line tool that Android Studio and the Android Gradle plugin use to compile your project's Java bytecode into DEX bytecode that runs on Android devices. d8 lets you use Java 8 language features in your app's code.",
+      "link": "https://developer.android.com/tools/d8",
+      "tags": ["command-line", "bytecode", "compilation", "java8"]
+    },
+    {
+      "name": "dmtracedump",
+      "description": "dmtracedump is a tool that generates graphical call-stack diagrams from trace log files. The tool uses the Graphviz Dot utility to create the graphical output, so you need to install Graphviz before running dmtracedump. If you haven't yet generated trace logs and saved them from your connected device to your local machine, go to Generate trace logs by instrumenting your app.",
+      "link": "https://developer.android.com/tools/dmtracedump",
+      "tags": ["command-line", "debugging", "profiling", "call-stack"]
+    },
+    {
+      "name": "dumpsys",
+      "description": "dumpsys is a tool that runs on Android devices and provides information about system services. Call dumpsys from the command line using the Android Debug Bridge (ADB) to get diagnostic output for all system services running on a connected device.",
+      "link": "https://developer.android.com/tools/dumpsys",
+      "tags": ["command-line", "debugging", "system-services", "diagnostics"]
+    },
+    {
+      "name": "etc1tool",
+      "description": "etc1tool is a command line utility that lets you encode PNG images to the ETC1 compression standard and decode ETC1 compressed images back to PNG.",
+      "link": "https://developer.android.com/tools/etc1tool",
+      "tags": ["command-line", "images", "compression", "resources"]
+    },
+    {
+      "name": "jobb",
+      "description": "The jobb tool lets you build encrypted and unencrypted APK expansion files in Opaque Binary Blob (OBB) format. You can download and mount these expansion files in your application using StorageManager on devices with Android 2.3 (API Level 9) or higher. OBB files provide additional file assets for Android applications, such as graphics, sounds, and video, separate from an application's APK file. For more information on using expansion files, see APK Expansion Files.",
+      "link": "https://developer.android.com/tools/jobb",
+      "tags": ["command-line", "expansion-files", "obb", "assets"]
+    },
+    {
+      "name": "Jetifier",
+      "description": "The standalone Jetifier tool migrates support-library-dependent libraries to instead rely on the equivalent AndroidX packages. The tool lets you migrate an individual library directly instead of using the Android Gradle plugin bundled with Android Studio.",
+      "link": "https://developer.android.com/tools/jetifier",
+      "tags": ["command-line", "androidx", "migration", "libraries"]
+    },
+    {
+      "name": "Logcat command-line tool",
+      "description": "Logcat is a command-line tool that dumps a log of system messages including messages that you have written from your app with the Log class.",
+      "link": "https://developer.android.com/tools/logcat",
+      "tags": ["command-line", "logging", "debugging", "diagnostics"]
+    },
+    {
+      "name": "mksdcard",
+      "description": "Use the mksdcard tool to create a FAT32 disk image that you can load into emulators running different Android Virtual Devices (AVDs) to simulate the presence of the same SD card in multiple devices.",
+      "link": "https://developer.android.com/tools/mksdcard",
+      "tags": ["command-line", "emulator", "virtual-device", "storage"]
+    },
+    {
+      "name": "R8 retrace",
+      "description": "R8 retrace is a tool for obtaining the original stack trace from an obfuscated stack trace. The stack trace is reconstructed by matching class and method names in a mapping file to their original definitions.",
+      "link": "https://developer.android.com/tools/retrace",
+      "tags": ["command-line", "obfuscation", "debugging", "stack-trace"]
+    },
+    {
+      "name": "sdkmanager",
+      "description": "The sdkmanager is a command-line tool that lets you view, install, update, and uninstall packages for the Android SDK. If you're using Android Studio, then you don't need to use this tool, and you can instead manage your SDK packages from the IDE.",
+      "link": "https://developer.android.com/tools/sdkmanager",
+      "tags": ["command-line", "sdk", "package-management", "installation"]
+    },
+    {
+      "name": "sqlite3",
+      "description": "From a remote shell to your device or from your host machine, use the sqlite3 command-line program to manage SQLite databases created by Android applications. The sqlite3 tool includes many useful commands, such as .dump to print out the contents of a table and .schema to print the SQL CREATE statement for an existing table. The tool also gives you the ability to execute SQLite commands on the fly.",
+      "link": "https://developer.android.com/tools/sqlite3",
+      "tags": ["command-line", "database", "sqlite", "data-management"]
+    },
+    {
+      "name": "perfetto",
+      "description": "perfetto is a tool that lets you collect performance information from Android devices via the Android Debug Bridge (ADB).",
+      "link": "https://developer.android.com/tools/perfetto",
+      "tags": ["command-line", "performance", "profiling", "analysis"]
+    },
+    {
+      "name": "zipalign",
+      "description": "zipalign is a zip archive alignment tool that helps ensure that all uncompressed files in the archive are aligned relative to the start of the file. This lets the files be accessed directly via mmap(2) , removing the need to copy this data in RAM and reducing your app's memory usage.",
+      "link": "https://developer.android.com/tools/zipalign",
+      "tags": ["command-line", "apk", "optimization", "memory"]
+    },
+    {
+      "name": "Layout Inspector",
+      "description": "Enables you to inspect and debug the layout of your UI in an emulator or physical device.",
+      "link": "https://developer.android.com/studio/debug/layout-inspector",
+      "tags": ["android-studio", "ui", "debugging", "inspection"]
+    },
+    {
+      "name": "Network Inspector",
+      "description": "The Network Inspector displays real-time network activity on a timeline, showing data sent and received. The Network Inspector lets you examine how and when your app transfers data and optimize the underlying code appropriately.",
+      "link": "https://developer.android.com/studio/debug/network-profiler",
+      "tags": ["android-studio", "network", "debugging", "profiling"]
+    },
+    {
+      "name": "Database Inspector",
+      "description": "The Database Inspector lets you inspect, query, and modify your app's databases while your app is running. This is especially useful for database debugging. The Database Inspector works with plain SQLite and with libraries built on top of SQLite, such as Room.",
+      "link": "https://developer.android.com/studio/inspect/database",
+      "tags": ["android-studio", "database", "debugging", "room"]
+    },
+    {
+      "name": "WorkManager Worker Inspector",
+      "description": "The Background Task Inspector helps you visualize, monitor, and debug your app's background workers when using WorkManager library 2.5.0 or higher.",
+      "link": "https://developer.android.com/studio/inspect/task",
+      "tags": ["android-studio", "background-tasks", "workmanager", "debugging"]
+    },
+    {
+      "name": "Device Explorer",
+      "description": "The Device Explorer lets you view, copy, and delete files on an Android device. It's useful when examining files your app creates or if you want to transfer files to and from a device.",
+      "link": "https://developer.android.com/studio/debug/device-file-explorer",
+      "tags": ["android-studio", "device", "file-management", "debugging"]
+    },
+    {
+      "name": "Debug APK",
+      "description": "Android Studio 3.0 and higher lets you profile and debug APKs that have debugging enabled without having to build them from an Android Studio project.",
+      "link": "https://developer.android.com/studio/debug/apk-debugger",
+      "tags": ["android-studio", "apk", "debugging", "profiling"]
+    },
+    {
+      "name": "Take A Screenshot",
+      "description": "On many Android devices, you can capture a screenshot by pressing the Power and Volume-down buttons on the device simultaneously. To save a screenshot directly to your workstation, you can capture the screenshot using Android Studio.",
+      "link": "https://developer.android.com/studio/debug/am-screenshot",
+      "tags": ["android-studio", "screenshot", "debugging", "ui"]
+    },
+    {
+      "name": "Record A Video",
+      "description": "Logcat lets you record an MP4 video from your device, such as for marketing materials or for debugging. Videos are a maximum of three minutes long, and audio is not recorded with the video file.",
+      "link": "https://developer.android.com/studio/debug/am-video",
+      "tags": ["android-studio", "video", "debugging", "ui"]
+    },
+    {
+      "name": "Capture and read bug reports",
+      "description": "A bug report contains device logs, stack traces, and other diagnostic information to help you find and fix bugs in your app. To capture a bug report from your device, use the Take bug report developer option on the device, the Android Emulator menu, or the adb bugreport command on your development machine.",
+      "link": "https://developer.android.com/studio/debug/bug-report",
+      "tags": ["android-studio", "debugging", "bug-reports", "diagnostics"]
+    },
+    {
+      "name": "APK Analyzer",
+      "description": "Android Studio includes an APK Analyzer that provides immediate insight into the composition of your APK or Android App Bundle after the build process completes. Using the APK Analyzer can reduce the time you spend debugging issues with DEX files and resources within your app and help reduce your APK size. The APK Analyzer is also available from the command line with apkanalyzer.",
+      "link": "https://developer.android.com/studio/debug/apk-analyzer",
+      "tags": ["android-studio", "apk", "analysis", "optimization"]
+    },
+    {
+      "name": "Preview UI",
+      "description": "Preview, organize, and interact with composables.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/previews",
+      "tags": ["jetpack-compose", "ui", "preview", "development"]
+    },
+    {
+      "name": "Preview Animation",
+      "description": "Inspect, debug, and preview animations frame by frame.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/animation-preview",
+      "tags": ["jetpack-compose", "animation", "preview", "debugging"]
+    },
+    {
+      "name": "Live Edit",
+      "description": "Apply changes and see them in real time without doing full builds.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/iterative-development",
+      "tags": ["jetpack-compose", "development", "real-time", "editing"]
+    },
+    {
+      "name": "Editor actions",
+      "description": "Use templates, gutter icons, and more in the Android Studio editor window.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/editor-actions",
+      "tags": ["jetpack-compose", "editor", "templates", "development"]
+    },
+    {
+      "name": "Compose Layout Inspector",
+      "description": "Inspect a Compose layout in an emulator or physical device.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/debug#layout_inspector",
+      "tags": ["jetpack-compose", "debugging", "layout", "inspection"]
+    },
+    {
+      "name": "Compose UI Check",
+      "description": "Inspect Compose UI for accessibility and adaptive issues.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/debug#compose_ui_check",
+      "tags": ["jetpack-compose", "accessibility", "ui", "adaptive"]
+    },
+    {
+      "name": "Composition Tracing",
+      "description": "Trace your composable functions in a system trace.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/tracing",
+      "tags": ["jetpack-compose", "performance", "tracing", "debugging"]
+    },
+    {
+      "name": "Relay (Design to code)",
+      "description": "Provide instant handoff of Android UI components between designers and developers. Designers can package up UI Components with information about layout, styling, dynamic content and interaction behavior. Developers can import those packages and convert them to Jetpack Compose code.",
+      "link": "https://developer.android.com/develop/ui/compose/tooling/relay",
+      "tags": ["jetpack-compose", "design", "ui", "collaboration"]
+    }
+  ]
+}
