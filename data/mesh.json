@@ -1,0 +1,8 @@
+{
+  "name": "Mesh",
+  "description": "A simple tool to create and edit mesh gradients.",
+  "link": "https://github.com/c5inco/Mesh",
+  "tags": [
+    "jetpack-compose",
+    "gradient"
+}
