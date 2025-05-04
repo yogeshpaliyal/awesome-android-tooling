@@ -1,0 +1,10 @@
+{
+  "name": "benchart",
+  "description": "📊 A web tool to visualise and compare plain text data. Support Android's Macrobenchmark output",
+  "link": "https://github.com/theapache64/benchart",
+  "tags": [
+    "macrobenchmark",
+    "profiling",
+    "compare"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "perf-sheet",
+  "description": "A tool that analyzes your method trace file and generates the analysis in a spreadsheet",
+  "link": "https://github.com/theapache64/perf-sheet",
+  "tags": [
+    "analyzes",
+    "profiling"
+  ]
+}

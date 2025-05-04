@@ -1,0 +1,10 @@
+{
+  "name": "diffetto",
+  "description": "A tool to differentiate between two Perfetto traces",
+  "link": "https://github.com/theapache64/diffetto",
+  "tags": [
+    "perfetto",
+    "profiling",
+    "compare"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "dex-diff",
+  "description": "A tool to compare two APK files at the dex level. Useful for checking the impact of things like fullMode and dex optimisations.",
+  "link": "https://github.com/theapache64/dex-diff",
+  "tags": [
+    "APK",
+    "dex",
+    "compare"
+  ]
+}
