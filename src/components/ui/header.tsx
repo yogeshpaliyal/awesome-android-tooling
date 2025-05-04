@@ -31,7 +31,7 @@ export function Header({ darkMode, toggleDarkMode, scrolled, heroVisible }: Head
         <div className="flex items-center gap-4">
           {/* Submit Tool Button - Outline Style */}
           <a 
-            href="https://github.com/yogeshpaliyal/awesome-android-tooling/issues/new?title=New%20Tool%20Submission&body=Tool%20Name:%0A%0ADescription:%0A%0ALink:%0A%0ATags:%20(comma-separated)" 
+            href="https://github.com/yogeshpaliyal/awesome-android-tooling/blob/master/CONTRIBUTING.md" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
