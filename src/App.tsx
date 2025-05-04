@@ -39,6 +39,25 @@ const getRandomPastelColor = () => {
   return pastelColors[randomIndex];
 };
 
+// Function to update URL query parameters
+const updateUrlWithTag = (tag: string | null) => {
+  const url = new URL(window.location.href);
+  
+  if (tag) {
+    url.searchParams.set('tag', tag);
+  } else {
+    url.searchParams.delete('tag');
+  }
+  
+  window.history.pushState({}, '', url);
+};
+
+// Function to get tag from URL query parameters
+const getTagFromUrl = (): string | null => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('tag');
+};
+
 function App() {
   const [tools, setTools] = useState<Tool[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -84,6 +103,12 @@ function App() {
           .map(entry => entry[0]);
           
         setPopularTags(popular);
+        
+        // Check for tag in URL
+        const urlTag = getTagFromUrl();
+        if (urlTag && Array.from(tags).includes(urlTag)) {
+          setSelectedTag(urlTag);
+        }
       } catch (error) {
         console.error('Error loading data:', error);
       }
@@ -167,15 +192,18 @@ function App() {
     setCurrentPage(1); // Reset to first page on new search
   };
 
-  // Handle tag selection
+  // Handle tag selection with URL update
   const handleTagSelect = (tag: string) => {
-    setSelectedTag(selectedTag === tag ? null : tag);
+    const newTag = selectedTag === tag ? null : tag;
+    setSelectedTag(newTag);
+    updateUrlWithTag(newTag);
     setCurrentPage(1); // Reset to first page on tag change
   };
 
-  // Clear all filters
+  // Clear all filters with URL update
   const clearFilters = () => {
     setSelectedTag(null);
+    updateUrlWithTag(null);
     setSearchTerm('');
     setCurrentPage(1);
   };
@@ -185,6 +213,19 @@ function App() {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentTools = filteredTools.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Handle URL changes from browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const urlTag = getTagFromUrl();
+      setSelectedTag(urlTag);
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   // Handle page change
   const handlePageChange = (pageNumber: number) => {
@@ -206,7 +247,7 @@ function App() {
         heroVisible={heroVisible}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex-grow">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex-grow">
         <header className="text-center mb-12 pb-6 border-b" id="about">
           {/**@ts-ignore */}
           <h1 ref={heroRef} className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
@@ -215,16 +256,19 @@ function App() {
           </p>
         </header>
 
-        <div className="mb-8">
+        {/* Container with fixed width to prevent layout shifts */}
+        <div className="w-full mb-8">
           {/* Enhanced SearchBar with integrated filters */}
-          <SearchBar 
-            value={searchTerm}
-            onChange={handleSearchChange}
-            onTagSelect={handleTagSelect}
-            selectedTag={selectedTag}
-            allTags={allTags}
-            popularTags={popularTags}
-          />
+          <div className="w-full">
+            <SearchBar 
+              value={searchTerm}
+              onChange={handleSearchChange}
+              onTagSelect={handleTagSelect}
+              selectedTag={selectedTag}
+              allTags={allTags}
+              popularTags={popularTags}
+            />
+          </div>
           
           {/* Selected and popular tags display below search bar */}
           <div className="mt-3 flex flex-wrap gap-2">
@@ -279,65 +323,81 @@ function App() {
           )}
         </div>
 
-        <div className="pt-4 tools-section">
-          {filteredTools.length > 0 ? (
-            <>
-              <MasonryGrid>
-                {currentTools.map((tool) => (
-                  <Card 
-                    key={tool.name} 
-                    className={cardColors[tool.name] || ''}
-                  >
-                    <CardHeader>
-                      <CardTitle>{tool.name}</CardTitle>
-                      <CardDescription>{tool.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex flex-wrap gap-2">
-                        {tool.tags.map(tag => (
-                          <span 
-                            key={tag} 
-                            className={`px-2 py-1 rounded text-xs cursor-pointer ${
-                              selectedTag === tag 
-                                ? 'bg-primary/20 text-primary font-medium' 
-                                : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                            }`}
-                            onClick={() => handleTagSelect(tag)}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </CardContent>
-                    <CardFooter>
-                      <a 
-                        href={tool.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
-                      >
-                        More Details →
-                      </a>
-                    </CardFooter>
-                  </Card>
-                ))}
-              </MasonryGrid>
-              
-              <Pagination 
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-              />
-              
-              <div className="text-center mt-4 text-sm text-muted-foreground">
-                Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredTools.length)} of {filteredTools.length} tools
+        <div className="pt-4 tools-section w-full">
+          <div className="w-full grid grid-cols-1">
+            {filteredTools.length > 0 ? (
+              <div className="w-full">
+                <MasonryGrid>
+                  {currentTools.map((tool) => (
+                    <Card 
+                      key={tool.name} 
+                      className={cardColors[tool.name] || ''}
+                    >
+                      <CardHeader>
+                        <CardTitle>{tool.name}</CardTitle>
+                        <CardDescription>{tool.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex flex-wrap gap-2">
+                          {tool.tags.map(tag => (
+                            <span 
+                              key={tag} 
+                              className={`px-2 py-1 rounded text-xs cursor-pointer ${
+                                selectedTag === tag 
+                                  ? 'bg-primary/20 text-primary font-medium' 
+                                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                              }`}
+                              onClick={() => handleTagSelect(tag)}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </CardContent>
+                      <CardFooter>
+                        <a 
+                          href={tool.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
+                        >
+                          More Details →
+                        </a>
+                      </CardFooter>
+                    </Card>
+                  ))}
+                </MasonryGrid>
+                
+                <Pagination 
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+                
+                <div className="text-center mt-4 text-sm text-muted-foreground">
+                  Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredTools.length)} of {filteredTools.length} tools
+                </div>
               </div>
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">No tools found matching your search criteria.</p>
-            </div>
-          )}
+            ) : (
+              <div className="w-full min-h-[400px] flex items-center justify-center">
+                <div className="text-center max-w-md mx-auto p-8 border border-border rounded-lg bg-card shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4 text-muted-foreground/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h3 className="text-lg font-medium mb-2">No results found</h3>
+                  <p className="text-muted-foreground">No tools found matching your search criteria. Try adjusting your search or filters.</p>
+                  {searchTerm || selectedTag ? (
+                    <button 
+                      onClick={clearFilters}
+                      className="mt-4 px-4 py-2 rounded-md text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                    >
+                      Clear all filters
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       
