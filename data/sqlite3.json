@@ -1,0 +1,11 @@
+{
+  "name": "sqlite3",
+  "description": "From a remote shell to your device or from your host machine, use the sqlite3 command-line program to manage SQLite databases created by Android applications. The sqlite3 tool includes many useful commands, such as .dump to print out the contents of a table and .schema to print the SQL CREATE statement for an existing table. The tool also gives you the ability to execute SQLite commands on the fly.",
+  "link": "https://developer.android.com/tools/sqlite3",
+  "tags": [
+    "command-line",
+    "database",
+    "sqlite",
+    "data-management"
+  ]
+}

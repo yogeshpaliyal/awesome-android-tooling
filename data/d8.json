@@ -1,0 +1,11 @@
+{
+  "name": "d8",
+  "description": "d8 is a command-line tool that Android Studio and the Android Gradle plugin use to compile your project's Java bytecode into DEX bytecode that runs on Android devices. d8 lets you use Java 8 language features in your app's code.",
+  "link": "https://developer.android.com/tools/d8",
+  "tags": [
+    "command-line",
+    "bytecode",
+    "compilation",
+    "java8"
+  ]
+}

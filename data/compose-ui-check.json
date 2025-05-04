@@ -1,0 +1,11 @@
+{
+  "name": "Compose UI Check",
+  "description": "Inspect Compose UI for accessibility and adaptive issues.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/debug#compose_ui_check",
+  "tags": [
+    "jetpack-compose",
+    "accessibility",
+    "ui",
+    "adaptive"
+  ]
+}

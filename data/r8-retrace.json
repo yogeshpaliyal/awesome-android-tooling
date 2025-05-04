@@ -1,0 +1,11 @@
+{
+  "name": "R8 retrace",
+  "description": "R8 retrace is a tool for obtaining the original stack trace from an obfuscated stack trace. The stack trace is reconstructed by matching class and method names in a mapping file to their original definitions.",
+  "link": "https://developer.android.com/tools/retrace",
+  "tags": [
+    "command-line",
+    "obfuscation",
+    "debugging",
+    "stack-trace"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "dmtracedump",
+  "description": "dmtracedump is a tool that generates graphical call-stack diagrams from trace log files. The tool uses the Graphviz Dot utility to create the graphical output, so you need to install Graphviz before running dmtracedump. If you haven't yet generated trace logs and saved them from your connected device to your local machine, go to Generate trace logs by instrumenting your app.",
+  "link": "https://developer.android.com/tools/dmtracedump",
+  "tags": [
+    "command-line",
+    "debugging",
+    "profiling",
+    "call-stack"
+  ]
+}

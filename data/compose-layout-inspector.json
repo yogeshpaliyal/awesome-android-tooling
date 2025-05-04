@@ -1,0 +1,11 @@
+{
+  "name": "Compose Layout Inspector",
+  "description": "Inspect a Compose layout in an emulator or physical device.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/debug#layout_inspector",
+  "tags": [
+    "jetpack-compose",
+    "debugging",
+    "layout",
+    "inspection"
+  ]
+}

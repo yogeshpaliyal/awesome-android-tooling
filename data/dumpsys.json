@@ -1,0 +1,11 @@
+{
+  "name": "dumpsys",
+  "description": "dumpsys is a tool that runs on Android devices and provides information about system services. Call dumpsys from the command line using the Android Debug Bridge (ADB) to get diagnostic output for all system services running on a connected device.",
+  "link": "https://developer.android.com/tools/dumpsys",
+  "tags": [
+    "command-line",
+    "debugging",
+    "system-services",
+    "diagnostics"
+  ]
+}

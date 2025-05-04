@@ -1,0 +1,11 @@
+{
+  "name": "etc1tool",
+  "description": "etc1tool is a command line utility that lets you encode PNG images to the ETC1 compression standard and decode ETC1 compressed images back to PNG.",
+  "link": "https://developer.android.com/tools/etc1tool",
+  "tags": [
+    "command-line",
+    "images",
+    "compression",
+    "resources"
+  ]
+}

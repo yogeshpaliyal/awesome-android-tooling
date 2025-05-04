@@ -1,0 +1,11 @@
+{
+  "name": "WorkManager Worker Inspector",
+  "description": "The Background Task Inspector helps you visualize, monitor, and debug your app's background workers when using WorkManager library 2.5.0 or higher.",
+  "link": "https://developer.android.com/studio/inspect/task",
+  "tags": [
+    "android-studio",
+    "background-tasks",
+    "workmanager",
+    "debugging"
+  ]
+}

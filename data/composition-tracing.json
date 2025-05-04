@@ -1,0 +1,11 @@
+{
+  "name": "Composition Tracing",
+  "description": "Trace your composable functions in a system trace.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/tracing",
+  "tags": [
+    "jetpack-compose",
+    "performance",
+    "tracing",
+    "debugging"
+  ]
+}

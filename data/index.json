@@ -1,0 +1,384 @@
+{
+  "tools": [
+    {
+      "name": "ADB (Android Debug Bridge)",
+      "file": "adb-android-debug-bridge.json",
+      "tags": [
+        "command-line",
+        "debugging",
+        "testing",
+        "device-communication"
+      ]
+    },
+    {
+      "name": "AAPT2",
+      "file": "aapt2.json",
+      "tags": [
+        "command-line",
+        "build",
+        "resources",
+        "packaging"
+      ]
+    },
+    {
+      "name": "apkanalyzer",
+      "file": "apkanalyzer.json",
+      "tags": [
+        "command-line",
+        "apk",
+        "debugging",
+        "analysis"
+      ]
+    },
+    {
+      "name": "apksigner",
+      "file": "apksigner.json",
+      "tags": [
+        "command-line",
+        "apk",
+        "signing",
+        "security"
+      ]
+    },
+    {
+      "name": "avdmanager",
+      "file": "avdmanager.json",
+      "tags": [
+        "command-line",
+        "emulator",
+        "virtual-device",
+        "testing"
+      ]
+    },
+    {
+      "name": "bmgr",
+      "file": "bmgr.json",
+      "tags": [
+        "command-line",
+        "backup",
+        "testing",
+        "data-management"
+      ]
+    },
+    {
+      "name": "bundletool",
+      "file": "bundletool.json",
+      "tags": [
+        "command-line",
+        "app-bundle",
+        "deployment",
+        "packaging"
+      ]
+    },
+    {
+      "name": "d8",
+      "file": "d8.json",
+      "tags": [
+        "command-line",
+        "bytecode",
+        "compilation",
+        "java8"
+      ]
+    },
+    {
+      "name": "dmtracedump",
+      "file": "dmtracedump.json",
+      "tags": [
+        "command-line",
+        "debugging",
+        "profiling",
+        "call-stack"
+      ]
+    },
+    {
+      "name": "dumpsys",
+      "file": "dumpsys.json",
+      "tags": [
+        "command-line",
+        "debugging",
+        "system-services",
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "etc1tool",
+      "file": "etc1tool.json",
+      "tags": [
+        "command-line",
+        "images",
+        "compression",
+        "resources"
+      ]
+    },
+    {
+      "name": "jobb",
+      "file": "jobb.json",
+      "tags": [
+        "command-line",
+        "expansion-files",
+        "obb",
+        "assets"
+      ]
+    },
+    {
+      "name": "Jetifier",
+      "file": "jetifier.json",
+      "tags": [
+        "command-line",
+        "androidx",
+        "migration",
+        "libraries"
+      ]
+    },
+    {
+      "name": "Logcat command-line tool",
+      "file": "logcat-command-line-tool.json",
+      "tags": [
+        "command-line",
+        "logging",
+        "debugging",
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "mksdcard",
+      "file": "mksdcard.json",
+      "tags": [
+        "command-line",
+        "emulator",
+        "virtual-device",
+        "storage"
+      ]
+    },
+    {
+      "name": "R8 retrace",
+      "file": "r8-retrace.json",
+      "tags": [
+        "command-line",
+        "obfuscation",
+        "debugging",
+        "stack-trace"
+      ]
+    },
+    {
+      "name": "sdkmanager",
+      "file": "sdkmanager.json",
+      "tags": [
+        "command-line",
+        "sdk",
+        "package-management",
+        "installation"
+      ]
+    },
+    {
+      "name": "sqlite3",
+      "file": "sqlite3.json",
+      "tags": [
+        "command-line",
+        "database",
+        "sqlite",
+        "data-management"
+      ]
+    },
+    {
+      "name": "perfetto",
+      "file": "perfetto.json",
+      "tags": [
+        "command-line",
+        "performance",
+        "profiling",
+        "analysis"
+      ]
+    },
+    {
+      "name": "zipalign",
+      "file": "zipalign.json",
+      "tags": [
+        "command-line",
+        "apk",
+        "optimization",
+        "memory"
+      ]
+    },
+    {
+      "name": "Layout Inspector",
+      "file": "layout-inspector.json",
+      "tags": [
+        "android-studio",
+        "ui",
+        "debugging",
+        "inspection"
+      ]
+    },
+    {
+      "name": "Network Inspector",
+      "file": "network-inspector.json",
+      "tags": [
+        "android-studio",
+        "network",
+        "debugging",
+        "profiling"
+      ]
+    },
+    {
+      "name": "Database Inspector",
+      "file": "database-inspector.json",
+      "tags": [
+        "android-studio",
+        "database",
+        "debugging",
+        "room"
+      ]
+    },
+    {
+      "name": "WorkManager Worker Inspector",
+      "file": "workmanager-worker-inspector.json",
+      "tags": [
+        "android-studio",
+        "background-tasks",
+        "workmanager",
+        "debugging"
+      ]
+    },
+    {
+      "name": "Device Explorer",
+      "file": "device-explorer.json",
+      "tags": [
+        "android-studio",
+        "device",
+        "file-management",
+        "debugging"
+      ]
+    },
+    {
+      "name": "Debug APK",
+      "file": "debug-apk.json",
+      "tags": [
+        "android-studio",
+        "apk",
+        "debugging",
+        "profiling"
+      ]
+    },
+    {
+      "name": "Take A Screenshot",
+      "file": "take-a-screenshot.json",
+      "tags": [
+        "android-studio",
+        "screenshot",
+        "debugging",
+        "ui"
+      ]
+    },
+    {
+      "name": "Record A Video",
+      "file": "record-a-video.json",
+      "tags": [
+        "android-studio",
+        "video",
+        "debugging",
+        "ui"
+      ]
+    },
+    {
+      "name": "Capture and read bug reports",
+      "file": "capture-and-read-bug-reports.json",
+      "tags": [
+        "android-studio",
+        "debugging",
+        "bug-reports",
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "APK Analyzer",
+      "file": "apk-analyzer.json",
+      "tags": [
+        "android-studio",
+        "apk",
+        "analysis",
+        "optimization"
+      ]
+    },
+    {
+      "name": "Preview UI",
+      "file": "preview-ui.json",
+      "tags": [
+        "jetpack-compose",
+        "ui",
+        "preview",
+        "development"
+      ]
+    },
+    {
+      "name": "Preview Animation",
+      "file": "preview-animation.json",
+      "tags": [
+        "jetpack-compose",
+        "animation",
+        "preview",
+        "debugging"
+      ]
+    },
+    {
+      "name": "Live Edit",
+      "file": "live-edit.json",
+      "tags": [
+        "jetpack-compose",
+        "development",
+        "real-time",
+        "editing"
+      ]
+    },
+    {
+      "name": "Editor actions",
+      "file": "editor-actions.json",
+      "tags": [
+        "jetpack-compose",
+        "editor",
+        "templates",
+        "development"
+      ]
+    },
+    {
+      "name": "Compose Layout Inspector",
+      "file": "compose-layout-inspector.json",
+      "tags": [
+        "jetpack-compose",
+        "debugging",
+        "layout",
+        "inspection"
+      ]
+    },
+    {
+      "name": "Compose UI Check",
+      "file": "compose-ui-check.json",
+      "tags": [
+        "jetpack-compose",
+        "accessibility",
+        "ui",
+        "adaptive"
+      ]
+    },
+    {
+      "name": "Composition Tracing",
+      "file": "composition-tracing.json",
+      "tags": [
+        "jetpack-compose",
+        "performance",
+        "tracing",
+        "debugging"
+      ]
+    },
+    {
+      "name": "Relay (Design to code)",
+      "file": "relay-design-to-code.json",
+      "tags": [
+        "jetpack-compose",
+        "design",
+        "ui",
+        "collaboration"
+      ]
+    }
+  ]
+}

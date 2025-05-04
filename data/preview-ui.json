@@ -1,0 +1,11 @@
+{
+  "name": "Preview UI",
+  "description": "Preview, organize, and interact with composables.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/previews",
+  "tags": [
+    "jetpack-compose",
+    "ui",
+    "preview",
+    "development"
+  ]
+}

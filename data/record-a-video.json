@@ -1,0 +1,11 @@
+{
+  "name": "Record A Video",
+  "description": "Logcat lets you record an MP4 video from your device, such as for marketing materials or for debugging. Videos are a maximum of three minutes long, and audio is not recorded with the video file.",
+  "link": "https://developer.android.com/studio/debug/am-video",
+  "tags": [
+    "android-studio",
+    "video",
+    "debugging",
+    "ui"
+  ]
+}

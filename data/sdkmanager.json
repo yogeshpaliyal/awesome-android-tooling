@@ -1,0 +1,11 @@
+{
+  "name": "sdkmanager",
+  "description": "The sdkmanager is a command-line tool that lets you view, install, update, and uninstall packages for the Android SDK. If you're using Android Studio, then you don't need to use this tool, and you can instead manage your SDK packages from the IDE.",
+  "link": "https://developer.android.com/tools/sdkmanager",
+  "tags": [
+    "command-line",
+    "sdk",
+    "package-management",
+    "installation"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Database Inspector",
+  "description": "The Database Inspector lets you inspect, query, and modify your app's databases while your app is running. This is especially useful for database debugging. The Database Inspector works with plain SQLite and with libraries built on top of SQLite, such as Room.",
+  "link": "https://developer.android.com/studio/inspect/database",
+  "tags": [
+    "android-studio",
+    "database",
+    "debugging",
+    "room"
+  ]
+}

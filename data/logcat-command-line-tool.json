@@ -1,0 +1,11 @@
+{
+  "name": "Logcat command-line tool",
+  "description": "Logcat is a command-line tool that dumps a log of system messages including messages that you have written from your app with the Log class.",
+  "link": "https://developer.android.com/tools/logcat",
+  "tags": [
+    "command-line",
+    "logging",
+    "debugging",
+    "diagnostics"
+  ]
+}

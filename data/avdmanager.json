@@ -1,0 +1,11 @@
+{
+  "name": "avdmanager",
+  "description": "The avdmanager is a command-line tool that lets you create and manage Android Virtual Devices (AVDs) from the command line. An AVD lets you define the characteristics of an Android handset, Wear OS watch, or Android TV device that you want to simulate in the Android Emulator.",
+  "link": "https://developer.android.com/tools/avdmanager",
+  "tags": [
+    "command-line",
+    "emulator",
+    "virtual-device",
+    "testing"
+  ]
+}

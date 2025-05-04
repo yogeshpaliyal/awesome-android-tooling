@@ -1,0 +1,11 @@
+{
+  "name": "Network Inspector",
+  "description": "The Network Inspector displays real-time network activity on a timeline, showing data sent and received. The Network Inspector lets you examine how and when your app transfers data and optimize the underlying code appropriately.",
+  "link": "https://developer.android.com/studio/debug/network-profiler",
+  "tags": [
+    "android-studio",
+    "network",
+    "debugging",
+    "profiling"
+  ]
+}

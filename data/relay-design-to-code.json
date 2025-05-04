@@ -1,0 +1,11 @@
+{
+  "name": "Relay (Design to code)",
+  "description": "Provide instant handoff of Android UI components between designers and developers. Designers can package up UI Components with information about layout, styling, dynamic content and interaction behavior. Developers can import those packages and convert them to Jetpack Compose code.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/relay",
+  "tags": [
+    "jetpack-compose",
+    "design",
+    "ui",
+    "collaboration"
+  ]
+}

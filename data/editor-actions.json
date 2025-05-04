@@ -1,0 +1,11 @@
+{
+  "name": "Editor actions",
+  "description": "Use templates, gutter icons, and more in the Android Studio editor window.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/editor-actions",
+  "tags": [
+    "jetpack-compose",
+    "editor",
+    "templates",
+    "development"
+  ]
+}

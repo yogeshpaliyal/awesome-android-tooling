@@ -1,0 +1,11 @@
+{
+  "name": "ADB (Android Debug Bridge)",
+  "description": "A command-line tool that facilitates communication between your development PC and Android devices, enabling debugging and testing.",
+  "link": "https://developer.android.com/tools/adb",
+  "tags": [
+    "command-line",
+    "debugging",
+    "testing",
+    "device-communication"
+  ]
+}

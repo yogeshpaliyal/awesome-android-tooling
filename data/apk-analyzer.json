@@ -1,0 +1,11 @@
+{
+  "name": "APK Analyzer",
+  "description": "Android Studio includes an APK Analyzer that provides immediate insight into the composition of your APK or Android App Bundle after the build process completes. Using the APK Analyzer can reduce the time you spend debugging issues with DEX files and resources within your app and help reduce your APK size. The APK Analyzer is also available from the command line with apkanalyzer.",
+  "link": "https://developer.android.com/studio/debug/apk-analyzer",
+  "tags": [
+    "android-studio",
+    "apk",
+    "analysis",
+    "optimization"
+  ]
+}

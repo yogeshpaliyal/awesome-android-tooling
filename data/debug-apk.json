@@ -1,0 +1,11 @@
+{
+  "name": "Debug APK",
+  "description": "Android Studio 3.0 and higher lets you profile and debug APKs that have debugging enabled without having to build them from an Android Studio project.",
+  "link": "https://developer.android.com/studio/debug/apk-debugger",
+  "tags": [
+    "android-studio",
+    "apk",
+    "debugging",
+    "profiling"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Take A Screenshot",
+  "description": "On many Android devices, you can capture a screenshot by pressing the Power and Volume-down buttons on the device simultaneously. To save a screenshot directly to your workstation, you can capture the screenshot using Android Studio.",
+  "link": "https://developer.android.com/studio/debug/am-screenshot",
+  "tags": [
+    "android-studio",
+    "screenshot",
+    "debugging",
+    "ui"
+  ]
+}

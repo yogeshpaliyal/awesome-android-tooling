@@ -1,0 +1,11 @@
+{
+  "name": "Capture and read bug reports",
+  "description": "A bug report contains device logs, stack traces, and other diagnostic information to help you find and fix bugs in your app. To capture a bug report from your device, use the Take bug report developer option on the device, the Android Emulator menu, or the adb bugreport command on your development machine.",
+  "link": "https://developer.android.com/studio/debug/bug-report",
+  "tags": [
+    "android-studio",
+    "debugging",
+    "bug-reports",
+    "diagnostics"
+  ]
+}

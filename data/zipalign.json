@@ -1,0 +1,11 @@
+{
+  "name": "zipalign",
+  "description": "zipalign is a zip archive alignment tool that helps ensure that all uncompressed files in the archive are aligned relative to the start of the file. This lets the files be accessed directly via mmap(2) , removing the need to copy this data in RAM and reducing your app's memory usage.",
+  "link": "https://developer.android.com/tools/zipalign",
+  "tags": [
+    "command-line",
+    "apk",
+    "optimization",
+    "memory"
+  ]
+}

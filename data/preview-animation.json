@@ -1,0 +1,11 @@
+{
+  "name": "Preview Animation",
+  "description": "Inspect, debug, and preview animations frame by frame.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/animation-preview",
+  "tags": [
+    "jetpack-compose",
+    "animation",
+    "preview",
+    "debugging"
+  ]
+}

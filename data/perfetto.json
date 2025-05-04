@@ -1,0 +1,11 @@
+{
+  "name": "perfetto",
+  "description": "perfetto is a tool that lets you collect performance information from Android devices via the Android Debug Bridge (ADB).",
+  "link": "https://developer.android.com/tools/perfetto",
+  "tags": [
+    "command-line",
+    "performance",
+    "profiling",
+    "analysis"
+  ]
+}

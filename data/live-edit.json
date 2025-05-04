@@ -1,0 +1,11 @@
+{
+  "name": "Live Edit",
+  "description": "Apply changes and see them in real time without doing full builds.",
+  "link": "https://developer.android.com/develop/ui/compose/tooling/iterative-development",
+  "tags": [
+    "jetpack-compose",
+    "development",
+    "real-time",
+    "editing"
+  ]
+}

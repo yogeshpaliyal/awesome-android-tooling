@@ -1,0 +1,11 @@
+{
+  "name": "Layout Inspector",
+  "description": "Enables you to inspect and debug the layout of your UI in an emulator or physical device.",
+  "link": "https://developer.android.com/studio/debug/layout-inspector",
+  "tags": [
+    "android-studio",
+    "ui",
+    "debugging",
+    "inspection"
+  ]
+}
