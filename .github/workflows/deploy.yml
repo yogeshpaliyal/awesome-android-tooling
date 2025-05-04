@@ -2,7 +2,7 @@ name: Build and Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   # Allow manual triggering of the workflow
   workflow_dispatch:
 
