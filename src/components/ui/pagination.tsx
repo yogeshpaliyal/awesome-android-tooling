@@ -89,7 +89,7 @@ export function Pagination({
             className={cn(
               "inline-flex items-center justify-center h-8 min-w-8 px-3 rounded-md text-sm",
               currentPage === page 
-                ? "bg-primary text-primary-foreground" 
+                ? "border-2 border-primary text-primary font-medium" 
                 : "border border-input bg-background hover:bg-accent hover:text-accent-foreground"
             )}
             aria-current={currentPage === page ? "page" : undefined}

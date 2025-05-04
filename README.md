@@ -18,9 +18,10 @@
 
 ## 📑 Categories
 
-- [Command Line Tools](#command-line-tools) - Tools that run from your terminal
-- [Android Studio Tools](#android-studio) - Built-in features to enhance your IDE experience
-- [Jetpack Compose Tools](#jetpack-compose) - Tools specific to modern UI development
+
+- [Command Line Tools](https://github.yogeshpaliyal.com/awesome-android-tooling/?tag=command-line) - Tools that run from your terminal
+- [Android Studio Tools](https://github.yogeshpaliyal.com/awesome-android-tooling/?tag=android-studio) - Built-in features to enhance your IDE experience
+- [Jetpack Compose Tools](https://github.yogeshpaliyal.com/awesome-android-tooling/?tag=jetpack-compose) - Tools specific to modern UI development
 
 ## ✨ Highlights
 
