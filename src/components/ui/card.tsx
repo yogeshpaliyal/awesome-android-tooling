@@ -1,13 +1,34 @@
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
+// Array of all pastel background color classes
+const pastelColors = [
+  'bg-card-pastel-green',
+  'bg-card-pastel-blue',
+  'bg-card-pastel-yellow',
+  'bg-card-pastel-purple',
+  'bg-card-pastel-red',
+  'bg-card-pastel-indigo',
+  'bg-card-pastel-cyan',
+  'bg-card-pastel-teal',
+  'bg-card-pastel-lime',
+  'bg-card-pastel-orange',
+];
+
 function Card({ className, ...props }: React.ComponentProps<"div">) {
+  // Select a random pastel color
+  const randomColor = React.useMemo(() => {
+    const randomIndex = Math.floor(Math.random() * pastelColors.length);
+    return pastelColors[randomIndex];
+  }, []);
+
   return (
     <div
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        "text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        randomColor, // Apply the pastel color
+        "!bg-opacity-100", // Force the background color to take precedence
         className
       )}
       {...props}

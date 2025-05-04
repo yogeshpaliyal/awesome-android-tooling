@@ -30,6 +30,20 @@ export function Header({ darkMode, toggleDarkMode, scrolled, heroVisible }: Head
         </div>
         
         <div className="flex items-center gap-4">
+          {/* Submit Tool Button - Outline Style */}
+          <a 
+            href="https://github.com/yogeshpaliyal/awesome-android-tooling/issues/new?title=New%20Tool%20Submission&body=Tool%20Name:%0A%0ADescription:%0A%0ALink:%0A%0ATags:%20(comma-separated)" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
+            title="Submit a new tool"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 5v14"></path>
+              <path d="M5 12h14"></path>
+            </svg>
+            Submit Tool
+          </a>
         
           <button 
             className="p-2 rounded-md hover:bg-muted transition-colors flex items-center justify-center"

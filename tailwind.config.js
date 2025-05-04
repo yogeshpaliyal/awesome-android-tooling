@@ -43,6 +43,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Add pastel colors for cards
+        "card-pastel-green": '#F0FFF4', // Very light green
+        "card-pastel-blue": '#EFF6FF', // Very light blue
+        "card-pastel-yellow": '#FFFBEB', // Very light yellow
+        "card-pastel-purple": '#FAF5FF', // Very light purple
+        "card-pastel-red": '#FEF2F2', // Very light red
+        "card-pastel-indigo": '#EEF2FF', // Very light indigo
+        "card-pastel-cyan": '#ECFEFF', // Very light cyan
+        "card-pastel-teal": '#F0FDFA', // Very light teal
+        "card-pastel-lime": '#F7FEE7', // Very light lime
+        "card-pastel-orange": '#FFF7ED', // Very light orange
       },
       borderRadius: {
         lg: "var(--radius)",

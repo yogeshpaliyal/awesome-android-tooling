@@ -21,7 +21,7 @@
     @apply px-4 py-2 rounded-full transition-colors duration-200;
   }
   .btn-primary {
-    @apply bg-green-600 text-white hover:bg-green-600/90;
+    @apply bg-primary text-white hover:bg-primary/90;
   }
   .card {
     @apply bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-200;
@@ -77,8 +77,8 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: rgb(30, 130, 76); /* Darker green for light mode */
+  --primary-foreground: rgb(255, 255, 255);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -111,8 +111,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: rgb(61, 220, 132); /* Keep original Android green for dark mode */
+  --primary-foreground: rgb(255, 255, 255);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);

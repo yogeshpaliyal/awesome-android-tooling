@@ -19,17 +19,41 @@ interface ToolsData {
   tools: Tool[];
 }
 
+// Array of pastel background colors for cards
+const pastelColors = [
+  'bg-card-pastel-green',
+  'bg-card-pastel-blue',
+  'bg-card-pastel-yellow',
+  'bg-card-pastel-purple',
+  'bg-card-pastel-red',
+  'bg-card-pastel-indigo',
+  'bg-card-pastel-cyan',
+  'bg-card-pastel-teal',
+  'bg-card-pastel-lime',
+  'bg-card-pastel-orange',
+];
+
+// Function to get a random pastel color
+const getRandomPastelColor = () => {
+  const randomIndex = Math.floor(Math.random() * pastelColors.length);
+  return pastelColors[randomIndex];
+};
+
 function App() {
   const [tools, setTools] = useState<Tool[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allTags, setAllTags] = useState<string[]>([]);
+  const [popularTags, setPopularTags] = useState<string[]>([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(9); // Show 9 tools per page (3x3 grid)
   const [heroVisible, setHeroVisible] = useState<boolean>(true);
   const heroRef = useRef<HTMLElement>(null);
+
+  // Store random colors for each tool to ensure consistent colors between renders
+  const [cardColors, setCardColors] = useState<{[key: string]: string}>({});
 
   // Load data from data.json
   useEffect(() => {
@@ -41,11 +65,25 @@ function App() {
 
         // Extract unique tags for filtering
         const tags = new Set<string>();
+        const tagCount: {[key: string]: number} = {};
+        
         data.tools.forEach(tool => {
-          tool.tags.forEach(tag => tags.add(tag));
+          tool.tags.forEach(tag => {
+            tags.add(tag);
+            tagCount[tag] = (tagCount[tag] || 0) + 1;
+          });
         });
         
+        // Sort all tags alphabetically
         setAllTags(Array.from(tags).sort());
+        
+        // Determine popular tags (top 6 most used)
+        const popular = Object.entries(tagCount)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 6)
+          .map(entry => entry[0]);
+          
+        setPopularTags(popular);
       } catch (error) {
         console.error('Error loading data:', error);
       }
@@ -53,6 +91,17 @@ function App() {
 
     fetchData();
   }, []);
+
+  // Generate random colors for each tool once when tools are loaded
+  useEffect(() => {
+    if (tools.length > 0 && Object.keys(cardColors).length === 0) {
+      const colors: {[key: string]: string} = {};
+      tools.forEach(tool => {
+        colors[tool.name] = getRandomPastelColor();
+      });
+      setCardColors(colors);
+    }
+  }, [tools, cardColors]);
 
   // Handle scroll effects for navbar, hero visibility and dark mode preference
   useEffect(() => {
@@ -119,9 +168,16 @@ function App() {
   };
 
   // Handle tag selection
-  const handleTagClick = (tag: string) => {
+  const handleTagSelect = (tag: string) => {
     setSelectedTag(selectedTag === tag ? null : tag);
     setCurrentPage(1); // Reset to first page on tag change
+  };
+
+  // Clear all filters
+  const clearFilters = () => {
+    setSelectedTag(null);
+    setSearchTerm('');
+    setCurrentPage(1);
   };
 
   // Pagination logic
@@ -152,44 +208,85 @@ function App() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex-grow">
         <header className="text-center mb-12 pb-6 border-b" id="about">
-          <h1  className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
-          <p ref={heroRef}  className="text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
+          <p ref={heroRef} className="text-muted-foreground max-w-3xl mx-auto">
             A curated list of tools that can be helpful building, testing, and optimizing your Android apps.
           </p>
         </header>
 
         <div className="mb-8">
+          {/* Enhanced SearchBar with integrated filters */}
           <SearchBar 
             value={searchTerm}
             onChange={handleSearchChange}
+            onTagSelect={handleTagSelect}
+            selectedTag={selectedTag}
+            allTags={allTags}
+            popularTags={popularTags}
           />
-        </div>
-
-        <div className="flex flex-wrap gap-2 mb-8 pb-6 border-b">
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              className={`px-3 py-1.5 rounded-full text-sm ${
-                selectedTag === tag
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-              } transition-colors`}
-              onClick={() => handleTagClick(tag)}
-            >
-              {tag}
-            </button>
-          ))}
+          
+          {/* Selected and popular tags display below search bar */}
+          <div className="mt-3 flex flex-wrap gap-2">
+            {/* Selected tag */}
+            {selectedTag && (
+              <div className="flex items-center space-x-2 mr-2">
+                <span className="text-sm text-muted-foreground">Selected:</span>
+                <button
+                  onClick={() => handleTagSelect(selectedTag)}
+                  className="px-3 py-1 rounded-full text-xs bg-primary text-primary-foreground flex items-center gap-1"
+                >
+                  {selectedTag}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+            )}
+            
+            {/* Popular tags - only show when no tag is selected */}
+            {!selectedTag && (
+              <>
+                <span className="text-sm text-muted-foreground mr-1 self-center">Popular:</span>
+                {popularTags.map(tag => (
+                  <button
+                    key={tag}
+                    onClick={() => handleTagSelect(tag)}
+                    className="px-3 py-1 rounded-full text-xs bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors"
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </>
+            )}
+          </div>
+          
+          {/* Clear filters button - only visible when filters are active */}
+          {(selectedTag || searchTerm) && (
+            <div className="flex justify-end mt-2">
+              <button 
+                onClick={clearFilters}
+                className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                Clear all filters
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="pt-4 tools-section">
           {filteredTools.length > 0 ? (
             <>
-              <MasonryGrid 
-                columnCount={{ default: 1, sm: 1, md: 2, lg: 3 }}
-                gap="1.5rem"
-              >
+              <MasonryGrid>
                 {currentTools.map((tool) => (
-                  <Card key={tool.name}>
+                  <Card 
+                    key={tool.name} 
+                    className={cardColors[tool.name] || ''}
+                  >
                     <CardHeader>
                       <CardTitle>{tool.name}</CardTitle>
                       <CardDescription>{tool.description}</CardDescription>
@@ -199,8 +296,12 @@ function App() {
                         {tool.tags.map(tag => (
                           <span 
                             key={tag} 
-                            className="px-2 py-1 rounded text-xs bg-muted text-muted-foreground cursor-pointer hover:bg-muted/80"
-                            onClick={() => handleTagClick(tag)}
+                            className={`px-2 py-1 rounded text-xs cursor-pointer ${
+                              selectedTag === tag 
+                                ? 'bg-primary/20 text-primary font-medium' 
+                                : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                            }`}
+                            onClick={() => handleTagSelect(tag)}
                           >
                             {tag}
                           </span>
