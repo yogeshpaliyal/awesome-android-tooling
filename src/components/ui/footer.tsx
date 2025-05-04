@@ -54,7 +54,7 @@ export function Footer({ className, ...props }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <a 
-                  href="https://github.com/yogeshchoudhary/awesome-android-tooling" 
+                  href="https://github.com/yogeshpaliyal/awesome-android-tooling" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -94,7 +94,7 @@ export function Footer({ className, ...props }: FooterProps) {
           </p>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
             <a 
-              href="https://github.com/yogeshpaliyal" 
+              href="https://github.com/yogeshpaliyal/awesome-android-tooling" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
