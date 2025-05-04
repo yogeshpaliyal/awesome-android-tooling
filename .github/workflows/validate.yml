@@ -8,6 +8,11 @@ on:
   # Allow manual triggering of the workflow
   workflow_dispatch:
 
+# Add explicit permissions for the GITHUB_TOKEN
+permissions:
+  contents: read
+  pull-requests: write # Required to add comments to PRs
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -29,21 +34,13 @@ jobs:
       - name: Run merge test
         run: bun run node scripts/merge.js
         
-      - name: Add validation status comment
-        if: always()
-        uses: actions/github-script@v6
+      # Option 1: Use a dedicated action for PR comments instead
+      - name: Add PR comment
+        if: github.event_name == 'pull_request' && always()
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const conclusion = "${{ job.status }}";
-            const emoji = conclusion === "success" ? "✅" : "❌";
-            const message = conclusion === "success" 
-              ? "All data files are valid!" 
-              : "There are issues with the data files. Please check the action logs for details.";
+          header: validation-result
+          message: |
+            ## Data Validation ${{ job.status == 'success' && '✅' || '❌' }}
             
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `## Data Validation ${emoji}\n\n${message}`
-            })
+            ${{ job.status == 'success' && 'All data files are valid!' || 'There are issues with the data files. Please check the action logs for details.' }}
