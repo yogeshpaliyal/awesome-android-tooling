@@ -1,6 +1,9 @@
+@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 /* Base styles */
 @layer base {
@@ -16,7 +19,7 @@
     @apply px-4 py-2 rounded-full transition-colors duration-200;
   }
   .btn-primary {
-    @apply bg-android-green text-white hover:bg-android-green/90;
+    @apply bg-green-600 text-white hover:bg-green-600/90;
   }
   .card {
     @apply bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-200;
