@@ -5,7 +5,7 @@ import App from './App.tsx'
 import { PostHogProvider} from 'posthog-js/react'
 
 const options = {
-  api_host: "https://webhook.site/5adb4893-1356-4d0f-9208-c202b337b945",
+  api_host: "https://us.i.posthog.com",
 }
 
 createRoot(document.getElementById('root')!).render(
