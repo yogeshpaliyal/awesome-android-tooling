@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import { SearchBar } from './components/ui/search-bar'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './components/ui/card'
 import { Footer } from './components/ui/footer'
+import { Pagination } from './components/ui/pagination'
+import { MasonryGrid } from './components/ui/masonry-grid'
+import { Header } from './components/ui/header'
 
 // Define type for the tools
 interface Tool {
@@ -23,6 +26,10 @@ function App() {
   const [allTags, setAllTags] = useState<string[]>([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage] = useState<number>(9); // Show 9 tools per page (3x3 grid)
+  const [heroVisible, setHeroVisible] = useState<boolean>(true);
+  const heroRef = useRef<HTMLElement>(null);
 
   // Load data from data.json
   useEffect(() => {
@@ -47,10 +54,18 @@ function App() {
     fetchData();
   }, []);
 
-  // Handle scroll effects for navbar and dark mode preference
+  // Handle scroll effects for navbar, hero visibility and dark mode preference
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
+      
+      // Check if hero section is still visible
+      if (heroRef.current) {
+        const heroRect = heroRef.current.getBoundingClientRect();
+        // Hero is considered not visible when it's top edge is above the viewport
+        // Add some threshold for a smoother transition
+        setHeroVisible(heroRect.bottom > 100);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -100,43 +115,45 @@ function App() {
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page on new search
   };
 
   // Handle tag selection
   const handleTagClick = (tag: string) => {
     setSelectedTag(selectedTag === tag ? null : tag);
+    setCurrentPage(1); // Reset to first page on tag change
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredTools.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentTools = filteredTools.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Handle page change
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    // Scroll to top of tools section
+    window.scrollTo({
+      top: document.querySelector('.tools-section')?.getBoundingClientRect().top! + window.scrollY - 100,
+      behavior: 'smooth'
+    });
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300 flex flex-col">
-      {/* Sticky Navbar */}
-      <div className={`fixed top-0 left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-sm transition-shadow duration-300 z-50 ${
-        scrolled ? 'shadow-md' : ''
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center">
-            <h2 className="text-xl font-semibold text-primary">Android Tooling</h2>
-          </div>
-          <div className="flex items-center">
-            <button 
-              className="p-2 rounded-md hover:bg-muted transition-colors"
-              onClick={toggleDarkMode}
-              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {darkMode ? (
-                <span className="text-xl">☀️</span>
-              ) : (
-                <span className="text-xl">🌙</span>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
+      {/* Use the new Header component with heroVisible prop */}
+      <Header 
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        scrolled={scrolled}
+        heroVisible={heroVisible}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex-grow">
-        <header className="text-center mb-12 pb-6 border-b">
-          <h1 className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
+        <header className="text-center mb-12 pb-6 border-b" id="about">
+          <h1  className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
+          <p ref={heroRef}  className="text-muted-foreground max-w-3xl mx-auto">
             A curated list of tools that can be helpful building, testing, and optimizing your Android apps.
           </p>
         </header>
@@ -164,41 +181,56 @@ function App() {
           ))}
         </div>
 
-        <div className="pt-4">
+        <div className="pt-4 tools-section">
           {filteredTools.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredTools.map((tool) => (
-                <Card key={tool.name}>
-                  <CardHeader>
-                    <CardTitle>{tool.name}</CardTitle>
-                    <CardDescription className="line-clamp-4">{tool.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {tool.tags.map(tag => (
-                        <span 
-                          key={tag} 
-                          className="px-2 py-1 rounded text-xs bg-muted text-muted-foreground cursor-pointer hover:bg-muted/80"
-                          onClick={() => handleTagClick(tag)}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <a 
-                      href={tool.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
-                    >
-                      More Details →
-                    </a>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
+            <>
+              <MasonryGrid 
+                columnCount={{ default: 1, sm: 1, md: 2, lg: 3 }}
+                gap="1.5rem"
+              >
+                {currentTools.map((tool) => (
+                  <Card key={tool.name}>
+                    <CardHeader>
+                      <CardTitle>{tool.name}</CardTitle>
+                      <CardDescription>{tool.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {tool.tags.map(tag => (
+                          <span 
+                            key={tag} 
+                            className="px-2 py-1 rounded text-xs bg-muted text-muted-foreground cursor-pointer hover:bg-muted/80"
+                            onClick={() => handleTagClick(tag)}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <a 
+                        href={tool.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
+                      >
+                        More Details →
+                      </a>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </MasonryGrid>
+              
+              <Pagination 
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+              
+              <div className="text-center mt-4 text-sm text-muted-foreground">
+                Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredTools.length)} of {filteredTools.length} tools
+              </div>
+            </>
           ) : (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No tools found matching your search criteria.</p>

@@ -89,9 +89,12 @@ export function Footer({ className, ...props }: FooterProps) {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Awesome Android Tooling. All rights reserved.
           </p>
+          <p className="text-sm text-primary font-medium mt-2 md:mt-0">
+            Made by Yogesh Paliyal with <span className="text-red-500">❤️</span> from India 🇮🇳
+          </p>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
             <a 
-              href="https://github.com" 
+              href="https://github.com/yogeshpaliyal" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -102,7 +105,7 @@ export function Footer({ className, ...props }: FooterProps) {
               </svg>
             </a>
             <a 
-              href="https://twitter.com" 
+              href="https://x.com/yogeshpaliyal" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -112,7 +115,7 @@ export function Footer({ className, ...props }: FooterProps) {
               </svg>
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://linkedin.com/in/yogeshpaliyal" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
