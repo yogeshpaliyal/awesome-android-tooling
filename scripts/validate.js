@@ -81,7 +81,7 @@ async function validateAllFiles() {
   
   // Get all JSON files except index.json
   const files = fs.readdirSync(dataDir)
-    .filter(file => file.endsWith('.json') && file !== 'index.json')
+    .filter(file => file.endsWith('.json') && file !== 'index.json' && file !== '_template.json')
     .map(file => path.join(dataDir, file));
   
   console.log(`\x1b[36mValidating ${files.length} JSON files in data directory...\x1b[0m\n`);

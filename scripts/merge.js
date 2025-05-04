@@ -27,7 +27,7 @@ if (indexExists) {
   // Otherwise read all .json files in the directory (except index.json)
   console.log('Index file not found, reading all JSON files in the directory...');
   toolFiles = fs.readdirSync(dataDir)
-    .filter(file => file.endsWith('.json') && file !== 'index.json');
+    .filter(file => file.endsWith('.json') && file !== 'index.json' && file !== '_template.json');
   console.log(`Found ${toolFiles.length} JSON files in directory`);
 }
 
