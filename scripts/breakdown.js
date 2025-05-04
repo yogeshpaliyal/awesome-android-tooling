@@ -42,24 +42,5 @@ tools.forEach((tool, index) => {
   console.log(`Created: ${filePath}`);
 });
 
-// Create an index.json with references to all files
-const index = {
-  tools: tools.map(tool => {
-    const fileName = tool.name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '');
-    
-    return {
-      name: tool.name,
-      file: `${fileName}.json`,
-      tags: tool.tags
-    };
-  })
-};
-
-fs.writeFileSync(path.join(outputDir, 'index.json'), JSON.stringify(index, null, 2));
-console.log(`Created: ${path.join(outputDir, 'index.json')}`);
 
 console.log(`\nTotal files created: ${tools.length + 1}`);
