@@ -1,5 +1,5 @@
 {
-  "name": "AAPT2",
+  "nameee": "AAPT2",
   "description": "AAPT2 (Android Asset Packaging Tool) is a build tool that Android Studio and Android Gradle Plugin use to compile and package your app's resources. AAPT2 parses, indexes, and compiles the resources into a binary format that is optimized for the Android platform.",
   "link": "https://developer.android.com/tools/aapt2",
   "tags": [
