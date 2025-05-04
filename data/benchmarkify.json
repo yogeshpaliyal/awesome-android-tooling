@@ -1,0 +1,9 @@
+{
+  "name": "Benchmarkify",
+  "description": "Benchmarkify is a web app that helps you visualize and analyze Android macrobenchmark results stored in JSON format.",
+  "link": "https://github.com/yogeshpaliyal/benchmarkify",
+  "tags": [
+    "macrobenchmark",
+    "profiling"
+  ]
+}
