@@ -67,7 +67,7 @@ function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage] = useState<number>(9); // Show 9 tools per page (3x3 grid)
+  const [itemsPerPage] = useState<number>(15); // Show 9 tools per page (3x3 grid)
   const [heroVisible, setHeroVisible] = useState<boolean>(true);
   const heroRef = useRef<HTMLElement>(null);
 
