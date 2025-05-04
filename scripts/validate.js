@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
 
 // Get directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -20,8 +21,8 @@ const toolSchema = {
     description: { type: 'string', minLength: 10 },
     link: { 
       type: 'string', 
-      format: 'uri',
-      pattern: '^https?://' 
+      // Use pattern instead of format for URL validation
+      pattern: '^https?://[\\w.-]+(\\.[\\w.-]+)+([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?$'
     },
     tags: { 
       type: 'array', 
@@ -34,6 +35,8 @@ const toolSchema = {
 
 // Initialize Ajv
 const ajv = new Ajv({ allErrors: true });
+// Add format support (optional, since we're using pattern)
+addFormats(ajv);
 const validate = ajv.compile(toolSchema);
 
 // Function to validate a JSON file
@@ -42,6 +45,13 @@ function validateJsonFile(filePath) {
     // Read and parse the file
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(fileContent);
+    
+    // Basic URL validation (as a fallback)
+    if (!data.link.startsWith('http://') && !data.link.startsWith('https://')) {
+      console.error(`\x1b[31m❌ Validation failed for ${path.basename(filePath)}:\x1b[0m`);
+      console.error(`  - /link must start with http:// or https://`);
+      return false;
+    }
     
     // Validate against schema
     const valid = validate(data);
