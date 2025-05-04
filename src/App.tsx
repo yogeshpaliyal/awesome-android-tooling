@@ -208,8 +208,9 @@ function App() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex-grow">
         <header className="text-center mb-12 pb-6 border-b" id="about">
-          <h1 className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
-          <p ref={heroRef} className="text-muted-foreground max-w-3xl mx-auto">
+          {/**@ts-ignore */}
+          <h1 ref={heroRef} className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
             A curated list of tools that can be helpful building, testing, and optimizing your Android apps.
           </p>
         </header>
