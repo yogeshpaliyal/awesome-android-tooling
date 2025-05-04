@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { SearchBar } from './components/ui/search-bar'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './components/ui/card'
+import { Footer } from './components/ui/footer'
 
 // Define type for the tools
 interface Tool {
@@ -105,18 +108,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300 flex flex-col">
       {/* Sticky Navbar */}
-      <div className={`fixed top-0 left-0 right-0 bg-white dark:bg-slate-800 backdrop-blur-sm transition-shadow duration-300 z-50 ${
+      <div className={`fixed top-0 left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-sm transition-shadow duration-300 z-50 ${
         scrolled ? 'shadow-md' : ''
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center">
-            <h2 className="text-xl font-semibold text-android-green">Android Tooling</h2>
+            <h2 className="text-xl font-semibold text-primary">Android Tooling</h2>
           </div>
           <div className="flex items-center">
             <button 
-              className="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+              className="p-2 rounded-md hover:bg-muted transition-colors"
               onClick={toggleDarkMode}
               aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
@@ -130,32 +133,29 @@ function App() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-        <header className="text-center mb-12 pb-6 border-b border-slate-200 dark:border-slate-700">
-          <h1 className="text-4xl font-bold text-android-green mb-3">Awesome Android Tooling</h1>
-          <p className="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex-grow">
+        <header className="text-center mb-12 pb-6 border-b">
+          <h1 className="text-4xl font-bold text-primary mb-3">Awesome Android Tooling</h1>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
             A curated list of tools that can be helpful building, testing, and optimizing your Android apps.
           </p>
         </header>
 
         <div className="mb-8">
-          <input
-            type="text"
-            placeholder="Search tools..."
+          <SearchBar 
             value={searchTerm}
             onChange={handleSearchChange}
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-android-green focus:border-transparent transition-all"
           />
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8 pb-6 border-b border-slate-200 dark:border-slate-700">
+        <div className="flex flex-wrap gap-2 mb-8 pb-6 border-b">
           {allTags.map(tag => (
             <button
               key={tag}
               className={`px-3 py-1.5 rounded-full text-sm ${
                 selectedTag === tag
-                  ? 'bg-android-green text-white'
-                  : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
               } transition-colors`}
               onClick={() => handleTagClick(tag)}
             >
@@ -168,41 +168,46 @@ function App() {
           {filteredTools.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredTools.map((tool) => (
-                <div 
-                  key={tool.name} 
-                  className="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg p-6 transition-all duration-200 flex flex-col h-full border border-slate-100 dark:border-slate-700"
-                >
-                  <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-3">{tool.name}</h3>
-                  <p className="text-slate-600 dark:text-slate-300 mb-6 flex-grow line-clamp-4">{tool.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4 mt-auto">
-                    {tool.tags.map(tag => (
-                      <span 
-                        key={tag} 
-                        className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600"
-                        onClick={() => handleTagClick(tag)}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <a 
-                    href={tool.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-android-green hover:text-android-green-dark hover:underline font-medium inline-flex items-center"
-                  >
-                    More Details →
-                  </a>
-                </div>
+                <Card key={tool.name}>
+                  <CardHeader>
+                    <CardTitle>{tool.name}</CardTitle>
+                    <CardDescription className="line-clamp-4">{tool.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {tool.tags.map(tag => (
+                        <span 
+                          key={tag} 
+                          className="px-2 py-1 rounded text-xs bg-muted text-muted-foreground cursor-pointer hover:bg-muted/80"
+                          onClick={() => handleTagClick(tag)}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <a 
+                      href={tool.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
+                    >
+                      More Details →
+                    </a>
+                  </CardFooter>
+                </Card>
               ))}
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-slate-500 dark:text-slate-400">No tools found matching your search criteria.</p>
+              <p className="text-muted-foreground">No tools found matching your search criteria.</p>
             </div>
           )}
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 }
