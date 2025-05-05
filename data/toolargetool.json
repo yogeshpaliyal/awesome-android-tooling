@@ -1,0 +1,8 @@
+{
+  "name": "toolargetool",
+  "description": "A tool for debugging TransactionTooLargeException on Android",
+  "link": "https://github.com/guardian/toolargetool",
+  "tags": [
+    "debugging"    
+  ]
+}
