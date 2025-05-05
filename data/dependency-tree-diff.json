@@ -1,0 +1,8 @@
+{
+  "name": "Dependency Tree Diff",
+  "description": "An intelligent diff tool for the output of Gradle's dependencies task which always shows the path to the root dependency.",
+  "link": "https://github.com/JakeWharton/dependency-tree-diff",
+  "tags": [
+    "command-line"
+  ]
+}
