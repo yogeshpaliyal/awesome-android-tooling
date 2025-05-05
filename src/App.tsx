@@ -331,7 +331,8 @@ function App() {
                   {currentTools.map((tool) => (
                     <Card 
                       key={tool.name} 
-                      className={cardColors[tool.name] || ''}
+                      className={`${cardColors[tool.name] || ''} cursor-pointer transition-all hover:shadow-md`}
+                      onClick={() => window.open(tool.link, '_blank', 'noopener,noreferrer')}
                     >
                       <CardHeader>
                         <CardTitle>{tool.name}</CardTitle>
@@ -347,7 +348,10 @@ function App() {
                                   ? 'border-2 border-primary text-primary font-medium' 
                                   : 'bg-muted text-muted-foreground hover:bg-muted/80'
                               }`}
-                              onClick={() => handleTagSelect(tag)}
+                              onClick={(e) => {
+                                e.stopPropagation(); // Prevent card click when tag is clicked
+                                handleTagSelect(tag);
+                              }}
                             >
                               {tag}
                             </span>
@@ -360,6 +364,7 @@ function App() {
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
+                          onClick={(e) => e.stopPropagation()} // Prevent double navigation
                         >
                           More Details →
                         </a>
