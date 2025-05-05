@@ -26,7 +26,7 @@
 
 ## ✨ Highlights
 
-- **38+ Tools** covering all aspects of Android development
+- **45+ Tools** covering all aspects of Android development
 - **Detailed descriptions** of each tool's purpose and capabilities
 - **Direct links** to official documentation
 - **Categorized by type** for easy discovery
