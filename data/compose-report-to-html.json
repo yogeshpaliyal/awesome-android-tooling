@@ -1,0 +1,11 @@
+{
+  "name": "Compose Compiler Reports to HTML Generator",
+  "description": "A utility to convert Jetpack Compose compiler metrics and reports to beautified 😍 HTML page. Made with ❤️ for Android Developers and Composers",
+  "link": "https://github.com/PatilShreyas/compose-report-to-html",
+  "tags": [
+    "jetpack-compose",
+    "cli",
+    "gradle-plugin",
+    "report"
+  ]
+}
