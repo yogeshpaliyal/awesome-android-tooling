@@ -1,6 +1,7 @@
 # 🛠️ Awesome Android Tooling
 
-![Android Tooling Header](https://github.com/user-attachments/assets/94043874-cea7-49a9-a284-28d8cfa054eb)
+[![Awesome Android Tooling](https://github.com/user-attachments/assets/11b701fa-6c81-4bcb-bc41-1954f8f88b2a)](https://github.yogeshpaliyal.com/awesome-android-tooling/)
+
 
 <p align="center">
   <a href="https://github.com/yogeshpaliyal/awesome-android-tooling/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yogeshpaliyal/awesome-android-tooling?style=for-the-badge"></a>
