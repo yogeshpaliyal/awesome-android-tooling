@@ -4,6 +4,7 @@ import { twMerge, ClassNameValue } from "tailwind-merge"
 export interface GitHubRepoStats {
   stars: number;
   forks: number;
+  lastUpdated: string | null; // Add last updated time
   loading?: boolean;
 }
 
@@ -41,7 +42,7 @@ export async function fetchGitHubRepoStats(url: string): Promise<GitHubRepoStats
   }
   
   // Mark as loading in cache
-  githubStatsCache[url] = { stars: 0, forks: 0, loading: true };
+  githubStatsCache[url] = { stars: 0, forks: 0, lastUpdated: null, loading: true };
   
   try {
     const repoInfo = extractGitHubInfo(url);
@@ -66,7 +67,8 @@ export async function fetchGitHubRepoStats(url: string): Promise<GitHubRepoStats
     
     const result = {
       stars: data.stargazers_count || 0,
-      forks: data.forks_count || 0
+      forks: data.forks_count || 0,
+      lastUpdated: data.pushed_at || null
     };
     
     // Cache the result
@@ -91,6 +93,50 @@ export function formatNumber(num: number): string {
     return (num / 1000).toFixed(1) + 'K';
   }
   return num.toString();
+}
+
+/**
+ * Format a date string to a relative time format (e.g. "2 months ago")
+ */
+export function formatRelativeTime(dateString: string | null): string {
+  if (!dateString) return 'Unknown';
+  
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+  
+  // Less than a minute
+  if (diffInSeconds < 60) {
+    return 'just now';
+  }
+  
+  // Less than an hour
+  if (diffInSeconds < 3600) {
+    const minutes = Math.floor(diffInSeconds / 60);
+    return `${minutes} ${minutes === 1 ? 'minute' : 'minutes'} ago`;
+  }
+  
+  // Less than a day
+  if (diffInSeconds < 86400) {
+    const hours = Math.floor(diffInSeconds / 3600);
+    return `${hours} ${hours === 1 ? 'hour' : 'hours'} ago`;
+  }
+  
+  // Less than a month
+  if (diffInSeconds < 2592000) {
+    const days = Math.floor(diffInSeconds / 86400);
+    return `${days} ${days === 1 ? 'day' : 'days'} ago`;
+  }
+  
+  // Less than a year
+  if (diffInSeconds < 31536000) {
+    const months = Math.floor(diffInSeconds / 2592000);
+    return `${months} ${months === 1 ? 'month' : 'months'} ago`;
+  }
+  
+  // More than a year
+  const years = Math.floor(diffInSeconds / 31536000);
+  return `${years} ${years === 1 ? 'year' : 'years'} ago`;
 }
 
 // Merges and formats the class names
