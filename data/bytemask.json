@@ -2,6 +2,8 @@
   "name": "Bytemask",
   "description": "Bytemask is an Android Gradle Plugin that masks your secret strings for the app in the source code making it difficult to extract from reverse engineering.",
   "link": "https://github.com/PatilShreyas/bytemask",
+  "authorName": "Shreyas Patil",
+  "authorLink": "https://github.com/PatilShreyas",
   "tags": [
     "gradle-plugin",
     "security"

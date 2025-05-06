@@ -6,6 +6,7 @@ import { Footer } from './components/ui/footer'
 import { Pagination } from './components/ui/pagination'
 import { MasonryGrid } from './components/ui/masonry-grid'
 import { Header } from './components/ui/header'
+import { GitHubStats } from './components/ui/github-stats'
 
 // Define type for the tools
 interface Tool {
@@ -13,6 +14,9 @@ interface Tool {
   description: string;
   link: string;
   tags: string[];
+  author?: string; // Optional author field
+  authorName?: string; // GitHub author name
+  authorLink?: string; // GitHub author profile link
 }
 
 interface ToolsData {
@@ -358,16 +362,25 @@ function App() {
                           ))}
                         </div>
                       </CardContent>
-                      <CardFooter>
-                        <a 
-                          href={tool.link} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
-                          onClick={(e) => e.stopPropagation()} // Prevent double navigation
-                        >
-                          More Details →
-                        </a>
+                      <CardFooter className="flex flex-col space-y-2">
+                        <div className="flex justify-between items-center w-full">
+                          <a 
+                            href={tool.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-primary hover:text-primary/90 hover:underline font-medium inline-flex items-center"
+                            onClick={(e) => e.stopPropagation()} // Prevent double navigation
+                          >
+                            More Details →
+                          </a>
+                          
+                          {/* Add GitHub Stats component for GitHub links */}
+                          <GitHubStats 
+                            url={tool.link} 
+                            authorName={tool.authorName}
+                            authorLink={tool.authorLink}
+                          />
+                        </div>
                       </CardFooter>
                     </Card>
                   ))}

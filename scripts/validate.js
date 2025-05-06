@@ -24,6 +24,11 @@ const toolSchema = {
       // Use pattern instead of format for URL validation
       pattern: '^https?://[\\w.-]+(\\.[\\w.-]+)+([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?$'
     },
+    authorName: { type: 'string' },
+    authorLink: { 
+      type: 'string',
+      pattern: '^https?://[\\w.-]+(\\.[\\w.-]+)+([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?$'
+    },
     tags: { 
       type: 'array', 
       minItems: 1,

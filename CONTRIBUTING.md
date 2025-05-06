@@ -39,6 +39,8 @@ You can add a new tool to the collection by following these steps:
      "name": "Your Tool Name",
      "description": "A detailed description of your tool explaining what it does and why it's useful for Android development. Aim for 1-3 sentences that clearly explain the purpose and value.",
      "link": "https://link-to-official-documentation-or-github-repo",
+     "authorName": "Name of tool author or organization (optional)",
+     "authorLink": "https://link-to-author-website-or-profile (optional)",
      "tags": [
        "relevant-tag-1",
        "relevant-tag-2",
@@ -72,6 +74,13 @@ Each tool entry must include:
 - **description**: A clear, concise description (10-300 characters)
 - **link**: URL to the official documentation or repository
 - **tags**: At least one descriptive tag (see existing tags below)
+
+### Optional Fields
+
+You can also include these optional fields:
+
+- **authorName**: Name of the tool's author or maintaining organization
+- **authorLink**: URL to the author's website, GitHub profile, or other relevant link
 
 ### Common Tags
 
@@ -115,6 +124,8 @@ Here's an example of a well-formatted tool submission:
   "name": "App Inspector",
   "description": "App Inspector allows you to examine the component hierarchy and properties of your Android app at runtime, helping you debug layout issues and understand how your UI components interact.",
   "link": "https://developer.android.com/example-tool",
+  "authorName": "Android Team",
+  "authorLink": "https://developer.android.com",
   "tags": [
     "android-studio",
     "debugging",
