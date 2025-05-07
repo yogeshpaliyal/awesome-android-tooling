@@ -1,0 +1,15 @@
+{
+  "name": "Firebender",
+  "description": "👊🔥 A lightweight coding agent built specifically for Android Studio based on models like Claude 3.7 Sonnet and Gemini 2.5 Pro. Privacy-focused: no training or storage of your code data. Comes with fast autocomplete, cmdk, agent rules customization, mcp support, and more! 🚀",
+  "link": "https://firebender.com",
+  "authorName": "Kevin and Aman",
+  "authorLink": "https://firebender.com/about",
+  "tags": [
+    "android-studio",
+    "debugging",
+    "development",
+    "ai",
+    "testing",
+    "code-assistant"
+  ]
+}
