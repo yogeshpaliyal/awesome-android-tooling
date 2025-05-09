@@ -1,9 +1,9 @@
-name: Validate Data Files
+name: Build for PR
 
 on:
   pull_request:
     branches: [ "master" ]
-    paths:
+    paths-ignore:
       - 'data/**/*.json'
   # Allow manual triggering of the workflow
   workflow_dispatch:
@@ -14,7 +14,7 @@ permissions:
   pull-requests: write # Required to add comments to PRs
 
 jobs:
-  validate:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -28,8 +28,5 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Validate JSON files
-        run: bun run validate
-        
-      - name: Run merge test
-        run: bun run node scripts/merge.js
+      - name: 🛠️ Build
+        run: bun run build

@@ -1,0 +1,14 @@
+{
+  "name": "Kotlin Bench",
+  "description": "🔍 A benchmark for evaluating Large Language Models (LLMs) on real-world Kotlin and Android software engineering tasks. The first benchmark that tests AI models' ability to resolve actual Kotlin and Android issues. Created by the Firebender team 🔥.",
+  "link": "https://github.com/firebenders/Kotlin-bench",
+  "authorName": "Aman Gottumukkala",
+  "authorLink": "https://firebender.com/blog/kotlin-bench",
+  "tags": [
+    "kotlin",
+    "benchmark",
+    "android",
+    "llm",
+    "ai"
+  ]
+}
