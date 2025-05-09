@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import fetch from 'node-fetch';
+import { fetchGitHubRepoData } from './merge.js'; // Import the function to fetch GitHub data
 
 // Get directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -10,61 +10,6 @@ const __dirname = path.dirname(__filename);
 // Define paths
 const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'data');
-
-// Helper function to extract GitHub info from URL
-function extractGitHubInfo(url) {
-  if (!url || !url.includes('github.com')) return null;
-  
-  try {
-    const urlObj = new URL(url);
-    if (urlObj.hostname !== 'github.com') return null;
-    
-    const path = urlObj.pathname.replace(/^\/|\/$/g, '');
-    const [owner, repo] = path.split('/');
-    
-    if (!owner || !repo) return null;
-    
-    return { owner, repo };
-  } catch (e) {
-    return null;
-  }
-}
-
-// Function to fetch GitHub repository data
-async function fetchGitHubRepoData(url) {
-  try {
-    const repoInfo = extractGitHubInfo(url);
-    if (!repoInfo) return null;
-    
-    const { owner, repo } = repoInfo;
-    
-    // Add a small random delay to avoid hitting rate limits
-    await new Promise(resolve => setTimeout(resolve, 500 + Math.random() * 500));
-    
-    console.log(`Fetching GitHub data for ${owner}/${repo}...`);
-    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-    
-    if (!response.ok) {
-      if (response.status === 403) {
-        console.warn('GitHub API rate limit exceeded');
-      }
-      console.error(`Error fetching data for ${owner}/${repo}: HTTP ${response.status}`);
-      return null;
-    }
-    
-    const data = await response.json();
-    
-    return {
-      authorName: data.owner?.login || owner,
-      authorLink: data.owner?.html_url || `https://github.com/${owner}`,
-      stars: data.stargazers_count || 0,
-      forks: data.forks_count || 0
-    };
-  } catch (error) {
-    console.error('Error fetching GitHub repo data:', error);
-    return null;
-  }
-}
 
 // Get all JSON files in the data directory (excluding index.json and _template.json)
 const jsonFiles = fs.readdirSync(dataDir)
