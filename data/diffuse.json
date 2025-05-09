@@ -1,0 +1,11 @@
+{
+  "name": "diffuse",
+  "description": "Diffuse is a tool for diffing APKs, AABs, AARs, and JARs in a way that aims to provide both a high-level view of what changes along with important detailed output.",
+  "link": "https://github.com/JakeWharton/diffuse",
+  "authorName": "Jake Wharton",
+  "authorLink": "https://github.com/JakeWharton",
+  "tags": [
+    "command-line",
+    "apk-diff"
+  ]
+}
