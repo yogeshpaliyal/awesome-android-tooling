@@ -7,6 +7,9 @@ import { Pagination } from './components/ui/pagination'
 import { MasonryGrid } from './components/ui/masonry-grid'
 import { Header } from './components/ui/header'
 import { GitHubStats } from './components/ui/github-stats'
+import { FloatingActionButton } from './components/ui/floating-action-button'
+import { ToolOfTheDay } from './components/ui/tool-of-the-day'
+import { getToolOfTheDay } from './lib/utils'
 
 // Define type for the tools
 interface Tool {
@@ -73,10 +76,32 @@ function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(15); // Show 9 tools per page (3x3 grid)
   const [heroVisible, setHeroVisible] = useState<boolean>(true);
+  const [toolOfTheDayOpen, setToolOfTheDayOpen] = useState<boolean>(false);
+  const [toolOfTheDay, setToolOfTheDay] = useState<Tool | null>(null);
   const heroRef = useRef<HTMLElement>(null);
 
   // Store random colors for each tool to ensure consistent colors between renders
   const [cardColors, setCardColors] = useState<{[key: string]: string}>({});
+  
+  // Function to select the Tool of the Day using the date-based algorithm
+  const selectToolOfTheDay = () => {
+    const todaysTool = getToolOfTheDay(tools);
+    if (todaysTool) {
+      setToolOfTheDay(todaysTool);
+      setToolOfTheDayOpen(true);
+    }
+  };
+
+  // Use useEffect to initialize the Tool of the Day when the app loads
+  useEffect(() => {
+    if (tools.length > 0) {
+      const todaysTool = getToolOfTheDay(tools);
+      if (todaysTool) {
+        setToolOfTheDay(todaysTool);
+        // Don't automatically open the modal, just set the tool
+      }
+    }
+  }, [tools]);
 
   // Load data from data.json
   useEffect(() => {
@@ -420,6 +445,37 @@ function App() {
       </div>
       
       <Footer />
+      
+      {/* Tool of the Day FloatingActionButton */}
+      <FloatingActionButton onClick={selectToolOfTheDay} />
+      
+      {/* Tool of the Day Modal */}
+      {toolOfTheDayOpen && toolOfTheDay && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-card w-full max-w-md rounded-lg shadow-lg animate-in fade-in zoom-in-95">
+            <div className="p-6">
+              <div className="flex justify-end">
+                <button 
+                  onClick={() => setToolOfTheDayOpen(false)}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+              
+              <h2 className="text-2xl font-bold mb-4 text-center">Tool of the Day</h2>
+              
+              <ToolOfTheDay
+                tool={toolOfTheDay}
+                color={cardColors[toolOfTheDay.name] || getRandomPastelColor()}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
