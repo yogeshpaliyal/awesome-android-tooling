@@ -8,7 +8,6 @@ interface FloatingActionButtonProps {
 
 export function FloatingActionButton({ onClick, visible = true }: FloatingActionButtonProps) {
   const [isVisible, setIsVisible] = useState(visible);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
@@ -16,7 +15,6 @@ export function FloatingActionButton({ onClick, visible = true }: FloatingAction
       const currentScrollY = window.scrollY;
       // Determine if scrolling up
       const isScrollUp = currentScrollY < lastScrollY;
-      setIsScrollingUp(isScrollUp);
       
       // Update the last scroll position
       setLastScrollY(currentScrollY);
