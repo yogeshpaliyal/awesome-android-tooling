@@ -33,14 +33,3 @@ jobs:
         
       - name: Run merge test
         run: bun run node scripts/merge.js
-        
-      # Option 1: Use a dedicated action for PR comments instead
-      - name: Add PR comment
-        if: github.event_name == 'pull_request' && always()
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          header: validation-result
-          message: |
-            ## Data Validation ${{ job.status == 'success' && '✅' || '❌' }}
-            
-            ${{ job.status == 'success' && 'All data files are valid!' || 'There are issues with the data files. Please check the action logs for details.' }}
