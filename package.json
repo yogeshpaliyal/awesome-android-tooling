@@ -8,7 +8,8 @@
     "build": "node scripts/merge.js && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "validate": "node scripts/validate.js"
+    "validate": "node scripts/validate.js",
+    "update-authors": "node scripts/update-authors.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.5",

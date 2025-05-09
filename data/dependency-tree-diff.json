@@ -4,5 +4,7 @@
   "link": "https://github.com/JakeWharton/dependency-tree-diff",
   "tags": [
     "command-line"
-  ]
+  ],
+  "authorName": "JakeWharton",
+  "authorLink": "https://github.com/JakeWharton"
 }
