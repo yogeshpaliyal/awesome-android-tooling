@@ -5,6 +5,8 @@
   "tags": [
     "android-studio",
     "plugin",
-    "adb"    
-  ]
+    "adb"
+  ],
+  "authorName": "pbreault",
+  "authorLink": "https://github.com/pbreault"
 }

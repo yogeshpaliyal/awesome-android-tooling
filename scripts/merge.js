@@ -32,7 +32,7 @@ function extractGitHubInfo(url) {
 }
 
 // Function to fetch GitHub repository data
-async function fetchGitHubRepoData(url) {
+export async function fetchGitHubRepoData(url) {
   try {
     const repoInfo = extractGitHubInfo(url);
     if (!repoInfo) return null;
