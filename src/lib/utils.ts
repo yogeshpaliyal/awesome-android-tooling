@@ -139,6 +139,40 @@ export function formatRelativeTime(dateString: string | null): string {
   return `${years} ${years === 1 ? 'year' : 'years'} ago`;
 }
 
+/**
+ * Select a tool of the day based on the current date
+ * This ensures the same tool is selected throughout the day
+ * but changes each day in a pseudo-random way
+ */
+export function getToolOfTheDay<T>(tools: T[]): T | null {
+  if (!tools || tools.length === 0) return null;
+  
+  const today = new Date();
+  // Use year, month, and day to create a consistent seed for the day
+  const seed = today.getFullYear() * 10000 + 
+               (today.getMonth() + 1) * 100 + 
+                today.getDate();
+                    
+  // Simple seeded random number generator using a linear congruential generator algorithm
+  // This will be consistent for the same seed (same day) but pseudo-random across different days
+  function seededRandom(seed: number): number {
+    // Parameters for the LCG algorithm (commonly used values)
+    const a = 1664525;
+    const c = 1013904223;
+    const m = Math.pow(2, 32);
+    
+    // Generate a random number between 0 and 1
+    const randomNumber = ((a * seed + c) % m) / m;
+    return randomNumber;
+  }
+  
+  // Use the seeded random function to get a consistent random index for today
+  const randomValue = seededRandom(seed);
+  const index = Math.floor(randomValue * tools.length);
+  
+  return tools[index];
+}
+
 // Merges and formats the class names
 export function cn(...inputs: ClassNameValue[]) {
   return twMerge(inputs)
