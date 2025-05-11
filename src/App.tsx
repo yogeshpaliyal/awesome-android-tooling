@@ -9,6 +9,7 @@ import { Header } from './components/ui/header'
 import { GitHubStats } from './components/ui/github-stats'
 import { FloatingActionButton } from './components/ui/floating-action-button'
 import { ToolOfTheDay } from './components/ui/tool-of-the-day'
+import { SubmitToolDialog } from './components/ui/submit-tool-dialog'
 import { getToolOfTheDay } from './lib/utils'
 
 // Define type for the tools
@@ -78,6 +79,7 @@ function App() {
   const [heroVisible, setHeroVisible] = useState<boolean>(true);
   const [toolOfTheDayOpen, setToolOfTheDayOpen] = useState<boolean>(false);
   const [toolOfTheDay, setToolOfTheDay] = useState<Tool | null>(null);
+  const [submitToolDialogOpen, setSubmitToolDialogOpen] = useState<boolean>(false);
   const heroRef = useRef<HTMLElement>(null);
 
   // Store random colors for each tool to ensure consistent colors between renders
@@ -90,6 +92,16 @@ function App() {
       setToolOfTheDay(todaysTool);
       setToolOfTheDayOpen(true);
     }
+  };
+
+  // Function to open submit tool dialog
+  const openSubmitToolDialog = () => {
+    setSubmitToolDialogOpen(true);
+  };
+
+  // Function to close submit tool dialog
+  const closeSubmitToolDialog = () => {
+    setSubmitToolDialogOpen(false);
   };
 
   // Use useEffect to initialize the Tool of the Day when the app loads
@@ -476,6 +488,24 @@ function App() {
           </div>
         </div>
       )}
+
+      {/* Submit Tool Dialog */}
+      <SubmitToolDialog
+        isOpen={submitToolDialogOpen}
+        onClose={closeSubmitToolDialog}
+      />
+      
+      {/* Submit Tool Button */}
+      <button
+        onClick={openSubmitToolDialog}
+        className="fixed bottom-24 right-6 bg-primary text-primary-foreground hover:bg-primary/90 w-12 h-12 rounded-full flex items-center justify-center shadow-lg z-40"
+        aria-label="Submit a new tool"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
     </div>
   );
 }
