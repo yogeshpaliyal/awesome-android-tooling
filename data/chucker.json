@@ -1,0 +1,12 @@
+{
+  "name": "chucker",
+  "description": "🔎 An HTTP inspector for Android & OkHTTP (like Charles but on device)",
+  "link": "https://github.com/ChuckerTeam/chucker",
+  "authorName": "ChuckerTeam",
+  "authorLink": "https://github.com/ChuckerTeam",
+  "tags": [
+    "http-requests",
+    "okhttp",
+    "library"
+  ]
+}
