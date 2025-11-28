@@ -1,0 +1,13 @@
+{
+  "name": "BitDive",
+  "description": "Zero-code API testing platform for Java/Kotlin. Captures real runtime behavior (HTTP, SQL, methods), auto-generates mocks from production traffic, and replays scenarios for automated testing.",
+  "link": "https://bitdive.io/",
+  "authorName": "BitDive",
+  "authorLink": "https://bitdive.io/",
+  "tags": [
+    "testing",
+    "api-testing",
+    "mocking"
+  ]
+}
+
