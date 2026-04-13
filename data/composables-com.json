@@ -1,0 +1,13 @@
+{
+  "name": "Composables.com",
+  "description": "A searchable catalog of Jetpack Compose and Compose Multiplatform components with code examples and previews.",
+  "link": "https://composables.com/",
+  "authorName": "Composable Horizons",
+  "authorLink": "https://github.com/composablehorizons",
+  "tags": [
+    "jetpack-compose",
+    "ui",
+    "components",
+    "compose-multiplatform"
+  ]
+}

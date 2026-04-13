@@ -1,0 +1,13 @@
+{
+  "name": "Compose Unstyled",
+  "description": "Unstyled, fully accessible UI primitives for Jetpack Compose and Compose Multiplatform. Build custom design systems without fighting default styles.",
+  "link": "https://github.com/composablehorizons/compose-unstyled",
+  "authorName": "Composable Horizons",
+  "authorLink": "https://github.com/composablehorizons",
+  "tags": [
+    "jetpack-compose",
+    "ui",
+    "accessibility",
+    "compose-multiplatform"
+  ]
+}
