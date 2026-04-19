@@ -1,0 +1,11 @@
+{
+  "name": "Android CLI",
+  "description": "The Android CLI is a command-line interface that enables you to more easily and efficiently build for Android using any tool of your choice. It standardizes core development competencies for agent-first workflows, providing an entry point to the official tools, skills, and knowledge you need to develop more effectively. It can also streamline CI, maintenance, and any other scripted automation for the increasingly distributed nature of Android development.",
+  "link": "https://developer.android.com/tools/agents/android-cli",
+  "authorName": "Android",
+  "authorLink": "https://developer.android.com",
+  "tags": [
+    "command-line",
+    "android"
+  ]
+}
