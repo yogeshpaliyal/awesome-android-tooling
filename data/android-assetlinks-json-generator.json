@@ -1,0 +1,14 @@
+{
+  "name": "Android AssetLinks JSON Generator",
+  "description": "Browser tool for creating assetlinks.json files for Android App Links from an app package name and one or more SHA-256 certificate fingerprints.",
+  "link": "https://alltoolsverse.com/tools/android-assetlinks-json-generator/",
+  "authorName": "All Tools Verse",
+  "authorLink": "https://alltoolsverse.com/",
+  "tags": [
+    "development",
+    "app-links",
+    "deep-linking",
+    "assetlinks",
+    "web"
+  ]
+}
