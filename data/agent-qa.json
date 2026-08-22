@@ -1,0 +1,13 @@
+{
+  "name": "agent-qa",
+  "description": "Open-source self-improving QA agent for natural-language mobile and web tests. Uses Appium for mobile execution, retains run memory, adapts to UI changes, and catches regressions.",
+  "link": "https://github.com/vostride/agent-qa",
+  "authorName": "Vostride",
+  "authorLink": "https://github.com/vostride",
+  "tags": [
+    "testing",
+    "ui",
+    "automation",
+    "command-line"
+  ]
+}
