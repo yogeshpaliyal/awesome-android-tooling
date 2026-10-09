@@ -1,0 +1,13 @@
+{
+  "name": "ERIUS PHONE MCP",
+  "description": "MCP server that lets an AI coding agent drive a hosted ERIUS PHONE Android device: install an APK, read the screen as an accessibility tree or screenshot, tap, type, swipe and pull crash logs. Needs an ERIUS PHONE API key (early access).",
+  "link": "https://github.com/Protremix/erius-phone-mcp",
+  "authorName": "ERIUS",
+  "authorLink": "https://eriusphone.com",
+  "tags": [
+    "testing",
+    "ui",
+    "automation",
+    "ai"
+  ]
+}
