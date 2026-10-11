@@ -1,0 +1,14 @@
+{
+  "name": "Device Hub Pro",
+  "description": "Free, open-source macOS app that mirrors and controls Android emulators and phones side by side with iOS simulators. Creates emulators from the Pixel catalog, pairs phones over Wi-Fi by QR code, changes device settings such as network, battery, location and appearance, and captures screenshots, recordings and logcat.",
+  "link": "https://github.com/gitemre/device-hub-pro",
+  "authorName": "gitemre",
+  "authorLink": "https://github.com/gitemre",
+  "tags": [
+    "emulator",
+    "device",
+    "mirroring",
+    "debugging",
+    "macos"
+  ]
+}
