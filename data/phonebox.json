@@ -1,0 +1,13 @@
+{
+  "name": "Phonebox",
+  "description": "Cloud Android phones for AI coding agents: a hosted MCP server, CLI and SDK let Claude Code, Codex or Cursor install an APK, tap, type, swipe and read the screen. Also usable by hand in the browser, with screen recording and live view links. Billed per second.",
+  "link": "https://phonebox.dev",
+  "authorName": "Phonebox",
+  "authorLink": "https://github.com/combined-ai/phonebox-android-mcp",
+  "tags": [
+    "testing",
+    "ui",
+    "automation",
+    "ai"
+  ]
+}
