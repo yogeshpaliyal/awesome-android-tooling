@@ -1,0 +1,15 @@
+{
+  "name": "Oh My Android",
+  "description": "Native macOS control panel for the Android Emulator: one-click dark mode, font scale, RTL, TalkBack, network throttling, GPS and Layout Inspector in dp. Built-in MCP server lets AI agents like Claude Code see and drive the emulator.",
+  "link": "https://github.com/ateymoori/oh-my-android",
+  "authorName": "Amir Teymoori",
+  "authorLink": "https://github.com/ateymoori",
+  "tags": [
+    "emulator",
+    "debugging",
+    "testing",
+    "ui",
+    "accessibility",
+    "ai"
+  ]
+}
