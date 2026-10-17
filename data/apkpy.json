@@ -1,0 +1,13 @@
+{
+  "name": "ApkPy",
+  "description": "Command-line tool that turns a Python file into a native Android project (Java Activities, XML layouts, resources and Gradle) and builds the APK. The app carries no Python interpreter or WebView, and a desktop Previewer shows each screen first.",
+  "link": "https://repo-apkpy.pages.dev/",
+  "authorName": "ApkPy",
+  "authorLink": "https://github.com/apkpy-project/repo-apkpy",
+  "tags": [
+    "command-line",
+    "development",
+    "ui",
+    "python"
+  ]
+}
