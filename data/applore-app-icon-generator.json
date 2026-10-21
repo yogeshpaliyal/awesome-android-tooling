@@ -1,0 +1,13 @@
+{
+  "name": "APPLORE App Icon Generator",
+  "description": "Browser tool that turns one 1024px image into every launcher icon size: Android mipmap densities and adaptive icon layers (foreground, background, monochrome), plus iOS and web sizes, downloaded as a ZIP. Free, no sign-up.",
+  "link": "https://applore.app/app-icon-generator",
+  "authorName": "APPLORE",
+  "authorLink": "https://applore.app/",
+  "tags": [
+    "design",
+    "app-icon",
+    "adaptive-icons",
+    "web"
+  ]
+}
