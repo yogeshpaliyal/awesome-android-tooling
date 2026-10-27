@@ -1,14 +1,8 @@
 {
   "name": "APK Compatibility Checker",
   "description": "Browser tool that checks whether an APK, XAPK or APKS will install on a chosen Android version and CPU, and names the exact install error if not. Also checks 16 KB page-size alignment of native libs, missing android:exported, and v1/v2/v3 signing with the cert SHA-256. Nothing is uploaded.",
-  "link": "https://file-label-guide.github.io/apk-compatibility-checker/",
+  "link": "https://deltaexecuter.org/tools/apk-checker/",
   "authorName": "Delta Executor",
   "authorLink": "https://deltaexecuter.org/",
-  "tags": [
-    "apk",
-    "compatibility",
-    "16kb-page-size",
-    "signing",
-    "web"
-  ]
+  "tags": ["apk", "compatibility", "16kb-page-size", "signing", "web"]
 }
