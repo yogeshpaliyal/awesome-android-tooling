@@ -1,0 +1,14 @@
+{
+  "name": "APK SHA-256 Verifier",
+  "description": "Check that an APK is the exact file the publisher listed: select a file and the page calculates its SHA-256 in your browser, reading it in 4 MB chunks, then compares it with the hash you paste in. Nothing is uploaded, no account is needed, and the page's Content Security Policy blocks network connections. A match shows the file is byte-identical to the published one; it does not show the app is safe.",
+  "link": "https://subwaysurfersmodgame.github.io/apk-sha256-verifier/",
+  "authorName": "SubwaySurfersModGame.com",
+  "authorLink": "https://subwaysurfersmodgame.com/",
+  "tags": [
+    "apk",
+    "security",
+    "checksum",
+    "sha256",
+    "web"
+  ]
+}
