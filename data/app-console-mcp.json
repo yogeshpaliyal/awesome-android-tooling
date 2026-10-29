@@ -1,0 +1,13 @@
+{
+  "name": "app-console-mcp",
+  "description": "MCP servers and a CLI for Google Play Console, App Store Connect and AdMob through the official APIs: upload and roll out releases, edit store listings, reply to reviews, and read crash and ANR rates and AdMob earnings. Every change is a dry run by default.",
+  "link": "https://github.com/Alekla0126/app-console-mcp",
+  "authorName": "Alejandro Lagunes",
+  "authorLink": "https://github.com/Alekla0126",
+  "tags": [
+    "command-line",
+    "google-play",
+    "deployment",
+    "ai"
+  ]
+}
