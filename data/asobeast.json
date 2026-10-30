@@ -1,0 +1,8 @@
+{
+  "name": "AsoBeast",
+  "description": "Open-source App Store Optimization tool for Google Play and the App Store. Tracks keyword rankings daily to position 200, watches competitors' store listings and reviews, and ranks listing fixes by impact. Self-host with Docker or use the hosted service; includes a REST API and an MCP server.",
+  "link": "https://github.com/AsoBeast/asobeast",
+  "authorName": "AsoBeast",
+  "authorLink": "https://asobeast.com",
+  "tags": ["google-play", "aso", "analysis", "self-hosted"]
+}
