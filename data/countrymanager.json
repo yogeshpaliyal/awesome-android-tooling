@@ -1,0 +1,13 @@
+{
+  "name": "countrymanager",
+  "description": "Google Play and App Store review management. Translates and tags every review, groups the complaints users raise, and drafts replies in the reviewer's language that a person approves before they post. Includes Slack alerts and a hosted MCP server for Claude and ChatGPT.",
+  "link": "https://countrymanager.app/",
+  "authorName": "countrymanager",
+  "authorLink": "https://countrymanager.app",
+  "tags": [
+    "google-play",
+    "reviews",
+    "ai",
+    "analysis"
+  ]
+}
