@@ -57,12 +57,21 @@ You can add a new tool to the collection by following these steps:
    bun run validate
    ```
 
-4. **Generate the combined data file** by running:
+4. **Preview the site locally** (optional). `bun run dev` combines the files in `data/` and starts the site:
    ```bash
-   npm run merge
-   # or
-   bun run merge
+   bun run dev
    ```
+
+## What Belongs in the Collection
+
+A tool is a good fit when all of these are true:
+
+- **It is for Android developers.** It helps build, test, debug, profile, analyze, ship or maintain Android apps. Tools for end users (app stores, mod sites, APK download sites) are not accepted.
+- **It is usable today.** The link works and leads to the tool itself or its documentation, not to a waitlist or a landing page with no product.
+- **The entry describes the tool, not the business.** Describe what it does for a developer. Leave out marketing claims, pricing and calls to action.
+- **It is not already listed.** Search the `data/` directory first.
+
+Open-source and free tools are preferred. Commercial tools are welcome when they meet the points above and the description says if a paid account is required.
 
 ## Guidelines for Tool Submissions
 
@@ -71,7 +80,7 @@ You can add a new tool to the collection by following these steps:
 Each tool entry must include:
 
 - **name**: The official name of the tool
-- **description**: A clear, concise description (10-300 characters)
+- **description**: A clear, concise description of 10 to 300 characters. `bun run validate` fails if it is longer
 - **link**: URL to the official documentation or repository
 - **tags**: At least one descriptive tag (see existing tags below)
 
@@ -84,11 +93,13 @@ You can also include these optional fields:
 
 ### Common Tags
 
-Choose from these existing tags or add new ones when appropriate:
+Reuse existing tags whenever one fits, and add a new tag only when none does:
 
-- **Tool Types**: `command-line`, `android-studio`, `jetpack-compose`
+- **Tool Types**: `command-line`, `android-studio`, `jetpack-compose`, `web`
 - **Functionality**: `debugging`, `testing`, `profiling`, `analysis`
 - **Focus Areas**: `ui`, `performance`, `optimization`, `development`
+
+Tags must be lowercase kebab-case (`command-line`, not `CLI` or `Command Line`), and each tag may appear only once per tool. Validation also rejects common variants of existing tags, such as `cli` (use `command-line`) or `screenshots` (use `screenshot`).
 
 ### Best Practices
 

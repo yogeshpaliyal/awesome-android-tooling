@@ -1,6 +1,6 @@
 {
   "name": "apkanalyzer",
-  "description": "The command-line version of APK Analyzer provides immediate insight into the composition of your APK after the build process completes and lets you compare differences between two APKs. Using APK Analyzer reduces the time you spend debugging issues with DEX files and resources within your app and reduces the size of your APK.",
+  "description": "The command-line version of APK Analyzer gives immediate insight into the composition of your APK after a build and lets you compare two APKs. It cuts the time spent debugging DEX files and resources and helps reduce APK size.",
   "link": "https://developer.android.com/tools/apkanalyzer",
   "tags": [
     "command-line",

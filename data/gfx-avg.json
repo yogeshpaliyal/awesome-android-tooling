@@ -3,7 +3,7 @@
   "description": "A CLI tool to find average from multiple gfxinfo files",
   "link": "https://github.com/theapache64/gfx-avg",
   "tags": [
-    "CLI",
+    "command-line",
     "gfxinfo"
   ],
   "authorName": "theapache64",

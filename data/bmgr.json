@@ -1,6 +1,6 @@
 {
   "name": "bmgr",
-  "description": "bmgr is a shell tool you can use to interact with the Backup Manager on Android devices version 2.2 (API Level 8) or higher. The tool provides commands to initiate backup and restore operations so that you don't need to repeatedly wipe data or take similar intrusive steps in order to test your application's backup functionality. The bmgr tool supports both Auto Backup and Key/Value Backup.",
+  "description": "bmgr is a shell tool for the Backup Manager on Android 2.2 (API level 8) and higher. It starts backup and restore operations so you can test your app's backup behavior without repeatedly wiping data. It supports both Auto Backup and Key/Value Backup.",
   "link": "https://developer.android.com/tools/bmgr",
   "tags": [
     "command-line",

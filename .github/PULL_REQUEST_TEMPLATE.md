@@ -25,7 +25,8 @@
   - [ ] I've included all required fields (name, description, link, tags)
   - [ ] The link is valid and points to official documentation
   - [ ] The description is clear and concise
-  - [ ] I've added appropriate tags
+  - [ ] The description is 300 characters or fewer
+  - [ ] I've reused existing tags where possible, in lowercase kebab-case
 
 ## Screenshots
 <!-- If applicable, add screenshots to help explain your changes -->
