@@ -4,7 +4,7 @@
   "link": "https://github.com/PatilShreyas/compose-report-to-html",
   "tags": [
     "jetpack-compose",
-    "cli",
+    "command-line",
     "gradle-plugin",
     "report"
   ],

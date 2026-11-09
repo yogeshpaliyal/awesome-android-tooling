@@ -12,13 +12,31 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'data');
 
+const MAX_DESCRIPTION_LENGTH = 300;
+
+// Tags that duplicate an existing tag. Use the canonical tag on the right instead.
+const TAG_ALIASES = {
+  cli: 'command-line',
+  terminal: 'command-line',
+  screenshots: 'screenshot',
+  analyzes: 'analysis',
+  analyzer: 'analysis',
+  benchmarking: 'benchmark',
+  tests: 'testing',
+  test: 'testing',
+  debug: 'debugging',
+  profiler: 'profiling',
+  compose: 'jetpack-compose',
+  'android-studio-plugin': 'android-studio',
+};
+
 // JSON Schema for tool validation
 const toolSchema = {
   type: 'object',
   required: ['name', 'description', 'link', 'tags'],
   properties: {
     name: { type: 'string', minLength: 1 },
-    description: { type: 'string', minLength: 10 },
+    description: { type: 'string', minLength: 10, maxLength: MAX_DESCRIPTION_LENGTH },
     link: { 
       type: 'string', 
       // Use pattern instead of format for URL validation
@@ -29,10 +47,12 @@ const toolSchema = {
       type: 'string',
       pattern: '^https?://[\\w.-]+(\\.[\\w.-]+)+([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?$'
     },
-    tags: { 
-      type: 'array', 
+    tags: {
+      type: 'array',
       minItems: 1,
-      items: { type: 'string', minLength: 1 }
+      uniqueItems: true,
+      // Tags are lowercase kebab-case, e.g. "command-line" or "jetpack-compose"
+      items: { type: 'string', pattern: '^[a-z0-9]+(-[a-z0-9]+)*$' }
     }
   },
   additionalProperties: false
@@ -68,7 +88,17 @@ function validateJsonFile(filePath) {
       });
       return false;
     }
-    
+
+    // Reject tags that duplicate a canonical tag
+    const aliasErrors = data.tags
+      .filter(tag => Object.hasOwn(TAG_ALIASES, tag))
+      .map(tag => `  - /tags "${tag}" duplicates an existing tag, use "${TAG_ALIASES[tag]}" instead`);
+    if (aliasErrors.length > 0) {
+      console.error(`\x1b[31m❌ Validation failed for ${path.basename(filePath)}:\x1b[0m`);
+      aliasErrors.forEach(message => console.error(message));
+      return false;
+    }
+
     return true;
   } catch (error) {
     console.error(`\x1b[31m❌ Error processing ${path.basename(filePath)}: ${error.message}\x1b[0m`);
