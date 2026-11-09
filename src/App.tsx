@@ -265,9 +265,14 @@ function App() {
   // Clear all filters with URL update
   const clearFilters = () => {
     setSelectedTag(null);
-    updateUrlWithTag(null);
     setSelectedType(null);
-    updateUrlWithType(null);
+    // Remove both filters in one history entry, so Back restores the previous selection
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('tag') || url.searchParams.has('type')) {
+      url.searchParams.delete('tag');
+      url.searchParams.delete('type');
+      window.history.pushState({}, '', url);
+    }
     setSearchTerm('');
     setCurrentPage(1);
   };
@@ -284,6 +289,7 @@ function App() {
       const urlTag = getTagFromUrl();
       setSelectedTag(urlTag);
       setSelectedType(getTypeFromUrl());
+      setCurrentPage(1); // The restored filters may have fewer pages
     };
     
     window.addEventListener('popstate', handlePopState);
