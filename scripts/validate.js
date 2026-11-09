@@ -91,7 +91,7 @@ function validateJsonFile(filePath) {
 
     // Reject tags that duplicate a canonical tag
     const aliasErrors = data.tags
-      .filter(tag => TAG_ALIASES[tag])
+      .filter(tag => Object.hasOwn(TAG_ALIASES, tag))
       .map(tag => `  - /tags "${tag}" duplicates an existing tag, use "${TAG_ALIASES[tag]}" instead`);
     if (aliasErrors.length > 0) {
       console.error(`\x1b[31m❌ Validation failed for ${path.basename(filePath)}:\x1b[0m`);
