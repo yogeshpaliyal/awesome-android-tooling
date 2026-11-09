@@ -15,7 +15,7 @@ const TITLE = 'Awesome Android Tooling';
 const SUMMARY =
   'A curated, community-maintained list of tools for Android developers: command-line tools, ' +
   'Android Studio plugins, Jetpack Compose tools, libraries and web tools for building, testing, ' +
-  'debugging, profiling and shipping Android apps.';
+  'debugging, profiling and shipping Android apps, plus AI agent skills for Android development.';
 
 // Keep Markdown output on one line per field.
 function oneLine(text) {
@@ -37,6 +37,7 @@ export function buildAiFiles(tools) {
 
   const entries = sorted.map((tool) => ({
     id: tool.id,
+    type: tool.type || 'tool',
     name: tool.name,
     description: oneLine(tool.description),
     link: tool.link,
@@ -46,6 +47,12 @@ export function buildAiFiles(tools) {
     source: `${REPO_URL}/blob/master/data/${tool.id}.json`,
   }));
 
+  const toolEntries = entries.filter((t) => t.type === 'tool');
+  const skillEntries = entries.filter((t) => t.type === 'skill');
+  const countLine =
+    `The list has ${toolEntries.length} tools and ${skillEntries.length} AI agent skills. ` +
+    `Each entry is one JSON file in the \`data/\` directory of ${REPO_URL}.`;
+
   const toolsJson = {
     schemaVersion: 1,
     name: TITLE,
@@ -53,14 +60,15 @@ export function buildAiFiles(tools) {
     homepage: SITE_URL,
     repository: REPO_URL,
     count: entries.length,
+    counts: { tool: toolEntries.length, skill: skillEntries.length },
     tags: Object.fromEntries(tagCounts),
     tools: entries,
   };
 
   const aboutLinks = [
-    `- [tools.json](${SITE_URL}tools.json): every tool as JSON (fields: id, name, description, link, authorName, authorLink, tags, source)`,
-    `- [llms-full.txt](${SITE_URL}llms-full.txt): every tool with its author and tags, as Markdown`,
-    `- [Website](${SITE_URL}): searchable list; filter by tag with \`?tag=<tag>\``,
+    `- [tools.json](${SITE_URL}tools.json): every entry as JSON (fields: id, type, name, description, link, authorName, authorLink, tags, source); type is "tool" or "skill"`,
+    `- [llms-full.txt](${SITE_URL}llms-full.txt): every tool and skill with its author and tags, as Markdown`,
+    `- [Website](${SITE_URL}): searchable list; filter by tag with \`?tag=<tag>\` and by type with \`?type=tool\` or \`?type=skill\``,
     `- [Contributing guide](${REPO_URL}/blob/master/CONTRIBUTING.md): how to add a tool and what is accepted`,
   ];
 
@@ -69,16 +77,14 @@ export function buildAiFiles(tools) {
     '',
     `> ${SUMMARY}`,
     '',
-    `The list has ${entries.length} tools. Each tool is one JSON file in the \`data/\` directory of ${REPO_URL}.`,
+    countLine,
     '',
     '## Data',
     '',
     ...aboutLinks,
     '',
-    '## Tools',
-    '',
-    ...entries.map((t) => `- [${oneLine(t.name)}](${t.link}): ${t.description} (tags: ${t.tags.join(', ')})`),
-    '',
+    ...indexSection('Tools', toolEntries),
+    ...indexSection('AI agent skills', skillEntries),
   ].join('\n');
 
   const llmsFull = [
@@ -86,7 +92,7 @@ export function buildAiFiles(tools) {
     '',
     `> ${SUMMARY}`,
     '',
-    `The list has ${entries.length} tools. Each tool is one JSON file in the \`data/\` directory of ${REPO_URL}.`,
+    countLine,
     '',
     '## Data',
     '',
@@ -96,7 +102,33 @@ export function buildAiFiles(tools) {
     '',
     ...tagCounts.map(([tag, count]) => `- \`${tag}\` (${count})`),
     '',
-    '## Tools',
+    ...fullSection('Tools', toolEntries),
+    ...fullSection('AI agent skills', skillEntries),
+  ].join('\n');
+
+  return {
+    'llms.txt': llmsTxt,
+    'llms-full.txt': llmsFull,
+    'tools.json': JSON.stringify(toolsJson, null, 2) + '\n',
+  };
+}
+
+// One line per entry, for llms.txt. Empty sections are left out.
+function indexSection(heading, entries) {
+  if (entries.length === 0) return [];
+  return [
+    `## ${heading}`,
+    '',
+    ...entries.map((t) => `- [${oneLine(t.name)}](${t.link}): ${t.description} (tags: ${t.tags.join(', ')})`),
+    '',
+  ];
+}
+
+// Full details per entry, for llms-full.txt. Empty sections are left out.
+function fullSection(heading, entries) {
+  if (entries.length === 0) return [];
+  return [
+    `## ${heading}`,
     '',
     ...entries.flatMap((t) => [
       `### ${oneLine(t.name)}`,
@@ -109,13 +141,7 @@ export function buildAiFiles(tools) {
       `- Source: ${t.source}`,
       '',
     ]),
-  ].join('\n');
-
-  return {
-    'llms.txt': llmsTxt,
-    'llms-full.txt': llmsFull,
-    'tools.json': JSON.stringify(toolsJson, null, 2) + '\n',
-  };
+  ];
 }
 
 export function writeAiFiles(tools, outDir) {

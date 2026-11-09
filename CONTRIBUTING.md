@@ -62,6 +62,28 @@ You can add a new tool to the collection by following these steps:
    bun run dev
    ```
 
+## Adding an AI Agent Skill
+
+The collection also lists AI agent skills for Android development: packaged instructions such as a `SKILL.md` folder that an AI coding agent (Claude Code, Gemini CLI, Codex and similar) loads to do an Android task better. Add one the same way as a tool, with two differences:
+
+- Set `"type": "skill"`. Tools leave `type` out, or set it to `"tool"`.
+- Include the `agent-skill` tag. Validation fails if a skill is missing it, or if a tool uses it.
+
+```json
+{
+  "name": "Your Skill Name",
+  "type": "skill",
+  "description": "What the skill teaches an agent to do in an Android project, and which agents can load it.",
+  "link": "https://github.com/owner/repo/tree/main/skills/your-skill",
+  "tags": [
+    "agent-skill",
+    "jetpack-compose"
+  ]
+}
+```
+
+Link to the skill itself (its folder or `SKILL.md`), not to a general prompt collection. The inclusion rules below apply to skills too.
+
 ## What Belongs in the Collection
 
 A tool is a good fit when all of these are true:
@@ -90,6 +112,7 @@ You can also include these optional fields:
 
 - **authorName**: Name of the tool's author or maintaining organization
 - **authorLink**: URL to the author's website, GitHub profile, or other relevant link
+- **type**: `"skill"` for an AI agent skill (see above). Leave it out for tools
 
 ### Common Tags
 
