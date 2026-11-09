@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Github, Moon, Plus, Sun } from 'lucide-react'
 
 const REPO_URL = 'https://github.com/yogeshpaliyal/awesome-android-tooling'
@@ -24,11 +24,13 @@ function useTheme(): [Theme, () => void] {
   const [theme, setTheme] = useState<Theme>(() =>
     document.documentElement.classList.contains('dark') ? 'dark' : 'light'
   )
+  // Set when the visitor picks a theme, so a pick is kept even when storage is blocked
+  const pickedRef = useRef(readStoredTheme() !== null)
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme: dark)')
     const onChange = () => {
-      if (readStoredTheme()) return
+      if (pickedRef.current) return
       const next: Theme = media.matches ? 'dark' : 'light'
       applyTheme(next)
       setTheme(next)
@@ -39,6 +41,7 @@ function useTheme(): [Theme, () => void] {
 
   const toggle = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark'
+    pickedRef.current = true
     applyTheme(next)
     setTheme(next)
     try {
@@ -61,11 +64,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-20 border-b bg-bg/90 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <a href={import.meta.env.BASE_URL} className="flex min-w-0 items-center gap-2 whitespace-nowrap text-sm font-semibold tracking-tight sm:text-base">
-          <span aria-hidden="true" className="font-mono text-accent">{'>_'}</span>
-          <span>Awesome Android Tooling</span>
+          <span aria-hidden="true" className="shrink-0 font-mono text-accent">{'>_'}</span>
+          <span className="truncate">Awesome Android Tooling</span>
         </a>
 
-        <nav aria-label="Site" className="flex items-center gap-1">
+        <nav aria-label="Site" className="flex shrink-0 items-center gap-1">
           <a
             href={SUBMIT_URL}
             target="_blank"
