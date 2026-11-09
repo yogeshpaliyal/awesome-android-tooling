@@ -31,6 +31,15 @@
 - **Direct links** to official documentation
 - **Categorized by type** for easy discovery
 
+## 🤖 For AI Assistants and Agents
+
+The whole list is published in machine-readable form, regenerated on every deploy from the files in `data/`:
+
+- [`llms.txt`](https://yogeshpaliyal.github.io/awesome-android-tooling/llms.txt): a short index in the [llms.txt](https://llmstxt.org) format
+- [`llms-full.txt`](https://yogeshpaliyal.github.io/awesome-android-tooling/llms-full.txt): every tool with its author and tags, as Markdown
+- [`tools.json`](https://yogeshpaliyal.github.io/awesome-android-tooling/tools.json): every tool as JSON, with a stable `id` per tool (`schemaVersion: 1`)
+
+AI coding agents that open pull requests should read [AGENTS.md](AGENTS.md) first.
 
 ## 🤝 How to Contribute
 
