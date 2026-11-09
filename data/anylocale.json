@@ -1,0 +1,8 @@
+{
+  "name": "anylocale",
+  "description": "Localization platform for Android strings.xml, with plurals, escaping and placeholders kept intact. AI drafts every language against the project glossary and each key's length limit, and nothing reaches the app until a person verifies it. Push and pull from a CLI in CI, or ship verified strings over the air with the open-source Android and Kotlin Multiplatform SDK.",
+  "link": "https://anylocale.com/integrations/android",
+  "authorName": "anylocale",
+  "authorLink": "https://anylocale.com",
+  "tags": ["localization", "resources", "command-line", "ai"]
+}
