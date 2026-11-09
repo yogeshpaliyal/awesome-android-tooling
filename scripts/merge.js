@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
 import { writeAiFiles } from './generate-ai-files.js';
-import { categoriesForTags } from './categories.js';
+import { CATEGORIES, categoriesForTags } from './categories.js';
 
 // Get directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -147,6 +147,7 @@ tools.sort((a, b) => a.name.localeCompare(b.name));
     
     // Create the final data structure
     const finalData = {
+      categories: CATEGORIES.map(({ id, label }) => ({ id, label })),
       // Site-only fields: categories from scripts/categories.js, and stars and pushedAt from GitHub
       tools: tools.map(tool => ({ ...tool, categories: categoriesForTags(tool.tags) }))
     };
