@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
+import { CATEGORIES, categoriesForTags } from './categories.js';
 
 // Get directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -118,6 +119,14 @@ function validateJsonFile(filePath) {
       console.error(isSkill
         ? `  - /tags must include "${SKILL_TAG}" when /type is "skill"`
         : `  - /type must be "skill" when /tags includes "${SKILL_TAG}"`);
+      return false;
+    }
+
+    // Every entry must show up in at least one category on the site
+    if (categoriesForTags(data.tags).length === 0) {
+      console.error(`\x1b[31m❌ Validation failed for ${path.basename(filePath)}:\x1b[0m`);
+      console.error('  - /tags must include at least one category tag. Pick the ones that fit from scripts/categories.js:');
+      CATEGORIES.forEach(category => console.error(`      ${category.label}: ${category.tags.join(', ')}`));
       return false;
     }
 

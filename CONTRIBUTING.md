@@ -124,6 +124,8 @@ Reuse existing tags whenever one fits, and add a new tag only when none does:
 
 Tags must be lowercase kebab-case (`command-line`, not `CLI` or `Command Line`), and each tag may appear only once per tool. Validation also rejects common variants of existing tags, such as `cli` (use `command-line`) or `screenshots` (use `screenshot`).
 
+The website groups the list into categories such as Command line, Debugging, Testing and Performance. At least one of your tags must belong to a category, so the tool shows up there. The categories and the tags in each are listed in [`scripts/categories.js`](scripts/categories.js).
+
 ### Best Practices
 
 - Use clear, descriptive names that match the tool's official name

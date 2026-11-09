@@ -10,7 +10,6 @@ const options = {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {/**@ts-ignore */}
      <PostHogProvider 
       apiKey={"phc_wXgrqQTjRA8gdQqoWBDGHj598ky4o1RGIPWlyiVCYwJ"}
       options={options}

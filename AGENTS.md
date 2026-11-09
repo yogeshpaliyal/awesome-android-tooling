@@ -38,6 +38,7 @@ An AI agent skill (for example a `SKILL.md` folder an agent loads for an Android
 - `tags` has at least one tag, every tag is lowercase kebab-case (`command-line`, not `CLI`), and no tag repeats.
 - `type`, when present, is `"tool"` or `"skill"`. A skill must have the `agent-skill` tag, and only skills may have it.
 - Some variants of existing tags are rejected, for example `cli` (use `command-line`), `compose` (use `jetpack-compose`), `skill` (use `agent-skill`) and `screenshots` (use `screenshot`). The full list is `TAG_ALIASES` in `scripts/validate.js`.
+- At least one tag puts the entry in a site category (for example `command-line`, `debugging`, `testing`, `profiling`, `jetpack-compose`, `apk`, `emulator`, `google-play`, `ai`). The categories and their tags are in `scripts/categories.js`.
 
 ## Writing a good entry
 

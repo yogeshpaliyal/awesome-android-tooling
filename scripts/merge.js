@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
 import { writeAiFiles } from './generate-ai-files.js';
+import { CATEGORIES, categoriesForTags } from './categories.js';
 
 // Get directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -41,11 +42,17 @@ export async function fetchGitHubRepoData(url) {
     
     const { owner, repo } = repoInfo;
     
-    // Add a small random delay to avoid hitting rate limits
-    await new Promise(resolve => setTimeout(resolve, 500 + Math.random() * 500));
-    
+    // Anonymous calls are limited to 60 an hour, so the build uses GITHUB_TOKEN when it is set
+    const token = process.env.GITHUB_TOKEN;
+    if (!token) {
+      // Spread anonymous calls out a little
+      await new Promise(resolve => setTimeout(resolve, 200));
+    }
+
     console.log(`Fetching GitHub data for ${owner}/${repo}...`);
-    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
     
     if (!response.ok) {
       if (response.status === 403) {
@@ -61,7 +68,8 @@ export async function fetchGitHubRepoData(url) {
       authorName: data.owner?.login || owner,
       authorLink: data.owner?.html_url || `https://github.com/${owner}`,
       stars: data.stargazers_count || 0,
-      forks: data.forks_count || 0
+      forks: data.forks_count || 0,
+      pushedAt: data.pushed_at || null
     };
   } catch (error) {
     console.error('Error fetching GitHub repo data:', error);
@@ -106,35 +114,26 @@ for (const file of toolFiles) {
   }
 }
 
-// Fetch GitHub data for tools that don't have author information
+// Fetch author, stars and last push for tools hosted on GitHub, so visitors' browsers
+// don't each call the GitHub API. If a call fails the tool is shown without stats.
 async function enrichToolsWithGitHubData() {
   console.log('\nEnriching tools with GitHub data...');
-  
-  for (let i = 0; i < tools.length; i++) {
-    const tool = tools[i];
-    
-    // Skip if both authorName and authorLink are already provided
-    if (tool.authorName && tool.authorLink) {
-      console.log(`${tool.name}: Author info already present (${tool.authorName})`);
+
+  for (const tool of tools) {
+    if (!extractGitHubInfo(tool.link)) {
       continue;
     }
-    
-    // Check if tool URL is from GitHub
-    if (tool.link && tool.link.includes('github.com')) {
-      console.log(`${tool.name}: Fetching author data from GitHub...`);
-      const gitHubData = await fetchGitHubRepoData(tool.link);
-      
-      if (gitHubData) {
-        // Add author information to the tool
-        tool.authorName = tool.authorName || gitHubData.authorName;
-        tool.authorLink = tool.authorLink || gitHubData.authorLink;
-        console.log(`${tool.name}: Added author info - ${tool.authorName}`);
-      } else {
-        console.log(`${tool.name}: Unable to fetch GitHub data`);
-      }
-    } else {
-      console.log(`${tool.name}: Not a GitHub URL, skipping`);
+
+    const gitHubData = await fetchGitHubRepoData(tool.link);
+    if (!gitHubData) {
+      console.log(`${tool.name}: Unable to fetch GitHub data`);
+      continue;
     }
+
+    tool.authorName = tool.authorName || gitHubData.authorName;
+    tool.authorLink = tool.authorLink || gitHubData.authorLink;
+    tool.stars = gitHubData.stars;
+    tool.pushedAt = gitHubData.pushedAt;
   }
 }
 
@@ -148,7 +147,9 @@ tools.sort((a, b) => a.name.localeCompare(b.name));
     
     // Create the final data structure
     const finalData = {
-      tools: tools
+      categories: CATEGORIES.map(({ id, label }) => ({ id, label })),
+      // Site-only fields: categories from scripts/categories.js, and stars and pushedAt from GitHub
+      tools: tools.map(tool => ({ ...tool, categories: categoriesForTags(tool.tags) }))
     };
 
     // Write the combined data to src/data.json
