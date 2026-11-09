@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
+import { writeAiFiles } from './generate-ai-files.js';
 
 // Get directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -11,6 +12,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'data');
 const outputFile = path.join(rootDir, 'src', 'data.json');
+const publicDir = path.join(rootDir, 'public');
 
 // Helper function to extract GitHub info from URL
 function extractGitHubInfo(url) {
@@ -89,12 +91,15 @@ if (indexExists) {
 
 // Read each tool file and combine them
 const tools = [];
+// Data file name (without .json) of each tool, used as its stable id in tools.json
+const toolIds = new Map();
 for (const file of toolFiles) {
   try {
     const filePath = path.join(dataDir, file);
     const fileData = fs.readFileSync(filePath, 'utf8');
     const toolData = JSON.parse(fileData);
     tools.push(toolData);
+    toolIds.set(toolData, path.basename(file, '.json'));
     console.log(`Added: ${toolData.name}`);
   } catch (error) {
     console.error(`Error reading file ${file}:`, error.message);
@@ -150,6 +155,9 @@ tools.sort((a, b) => a.name.localeCompare(b.name));
     fs.writeFileSync(outputFile, JSON.stringify(finalData, null, 2));
     console.log(`\nCreated combined file: ${outputFile}`);
     console.log(`Total tools merged: ${tools.length}`);
+
+    // Machine-readable copies for LLMs and AI agents (llms.txt, llms-full.txt, tools.json)
+    writeAiFiles(tools.map(tool => ({ id: toolIds.get(tool), ...tool })), publicDir);
   } catch (error) {
     console.error('Error during GitHub data enrichment:', error);
   }
