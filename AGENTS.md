@@ -4,14 +4,14 @@ Instructions for AI coding agents working in this repository. Humans should read
 
 ## What this repository is
 
-A curated list of tools for Android developers, published as a website at https://yogeshpaliyal.github.io/awesome-android-tooling/. Each tool is one JSON file in `data/`. The site is a Vite + React app in `src/`, and `scripts/merge.js` combines `data/*.json` into `src/data.json` (and the files for AI readers, see below) at build time.
+A curated list of tools and AI agent skills for Android developers, published as a website at https://yogeshpaliyal.github.io/awesome-android-tooling/. Each tool is one JSON file in `data/`. The site is a Vite + React app in `src/`, and `scripts/merge.js` combines `data/*.json` into `src/data.json` (and the files for AI readers, see below) at build time.
 
 ## Adding a tool
 
 1. Check the tool is not already listed: search `data/` for its name and its link.
 2. Check it belongs in the list (see "What is accepted" below). If it does not, say so instead of adding it.
 3. Create `data/<tool-name>.json`. The file name is lowercase kebab-case and becomes the tool's stable `id`, so do not rename existing files.
-4. Use this shape. `name`, `description`, `link` and `tags` are required; no other fields are allowed.
+4. Use this shape. `name`, `description`, `link` and `tags` are required; `type`, `authorName` and `authorLink` are optional; no other fields are allowed.
 
    ```json
    {
@@ -27,12 +27,17 @@ A curated list of tools for Android developers, published as a website at https:
 5. Run `bun run validate` (or `npm run validate`) and fix every error before committing.
 6. Commit only the new data file, with a message like `Add <Tool Name>`. Do not commit `src/data.json` or the generated files in `public/`.
 
+## Adding an AI agent skill
+
+An AI agent skill (for example a `SKILL.md` folder an agent loads for an Android task) is added like a tool, plus `"type": "skill"` and the `agent-skill` tag. Link to the skill itself, not to a general prompt collection. Tools leave `type` out.
+
 ## Rules that validation enforces
 
 - `description` is 10 to 300 characters.
 - `link` and `authorLink` start with `http://` or `https://`.
 - `tags` has at least one tag, every tag is lowercase kebab-case (`command-line`, not `CLI`), and no tag repeats.
-- Some variants of existing tags are rejected, for example `cli` (use `command-line`), `compose` (use `jetpack-compose`) and `screenshots` (use `screenshot`). The full list is `TAG_ALIASES` in `scripts/validate.js`.
+- `type`, when present, is `"tool"` or `"skill"`. A skill must have the `agent-skill` tag, and only skills may have it.
+- Some variants of existing tags are rejected, for example `cli` (use `command-line`), `compose` (use `jetpack-compose`), `skill` (use `agent-skill`) and `screenshots` (use `screenshot`). The full list is `TAG_ALIASES` in `scripts/validate.js`.
 
 ## Writing a good entry
 
@@ -57,7 +62,7 @@ Open-source and free tools are preferred. Commercial tools are fine when they me
 
 - `llms.txt`: a short index in the [llms.txt](https://llmstxt.org) format
 - `llms-full.txt`: every tool with author and tags, as Markdown
-- `tools.json`: every tool as JSON, `schemaVersion: 1`
+- `tools.json`: every entry as JSON, `schemaVersion: 1`, with `type` set to `"tool"` or `"skill"`
 
 They are build output and are ignored by git. If you change the fields of `tools.json` in a way that breaks existing readers, increase `schemaVersion`.
 

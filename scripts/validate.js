@@ -14,6 +14,11 @@ const dataDir = path.join(rootDir, 'data');
 
 const MAX_DESCRIPTION_LENGTH = 300;
 
+// Entry types. "tool" is the default when "type" is left out.
+// A "skill" is an AI agent skill (for example a SKILL.md package) and must carry the SKILL_TAG tag.
+const ENTRY_TYPES = ['tool', 'skill'];
+const SKILL_TAG = 'agent-skill';
+
 // Tags that duplicate an existing tag. Use the canonical tag on the right instead.
 const TAG_ALIASES = {
   cli: 'command-line',
@@ -28,6 +33,11 @@ const TAG_ALIASES = {
   profiler: 'profiling',
   compose: 'jetpack-compose',
   'android-studio-plugin': 'android-studio',
+  skill: SKILL_TAG,
+  skills: SKILL_TAG,
+  'agent-skills': SKILL_TAG,
+  'ai-skill': SKILL_TAG,
+  'claude-skill': SKILL_TAG,
 };
 
 // JSON Schema for tool validation
@@ -36,6 +46,7 @@ const toolSchema = {
   required: ['name', 'description', 'link', 'tags'],
   properties: {
     name: { type: 'string', minLength: 1 },
+    type: { type: 'string', enum: ENTRY_TYPES },
     description: { type: 'string', minLength: 10, maxLength: MAX_DESCRIPTION_LENGTH },
     link: { 
       type: 'string', 
@@ -96,6 +107,17 @@ function validateJsonFile(filePath) {
     if (aliasErrors.length > 0) {
       console.error(`\x1b[31m❌ Validation failed for ${path.basename(filePath)}:\x1b[0m`);
       aliasErrors.forEach(message => console.error(message));
+      return false;
+    }
+
+    // A skill must carry the agent-skill tag, and only skills may carry it
+    const isSkill = data.type === 'skill';
+    const hasSkillTag = data.tags.includes(SKILL_TAG);
+    if (isSkill !== hasSkillTag) {
+      console.error(`\x1b[31m❌ Validation failed for ${path.basename(filePath)}:\x1b[0m`);
+      console.error(isSkill
+        ? `  - /tags must include "${SKILL_TAG}" when /type is "skill"`
+        : `  - /type must be "skill" when /tags includes "${SKILL_TAG}"`);
       return false;
     }
 

@@ -16,11 +16,17 @@ interface Tool {
   name: string;
   description: string;
   link: string;
+  type?: EntryType; // "tool" when left out
   tags: string[];
   author?: string; // Optional author field
   authorName?: string; // GitHub author name
   authorLink?: string; // GitHub author profile link
 }
+
+type EntryType = 'tool' | 'skill';
+type TypeFilter = EntryType | null; // null shows every entry
+
+const getEntryType = (tool: Tool): EntryType => tool.type ?? 'tool';
 
 interface ToolsData {
   tools: Tool[];
@@ -59,6 +65,22 @@ const updateUrlWithTag = (tag: string | null) => {
   window.history.pushState({}, '', url);
 };
 
+// Keep the type filter in the URL as ?type=tool or ?type=skill
+const updateUrlWithType = (type: TypeFilter) => {
+  const url = new URL(window.location.href);
+  if (type) {
+    url.searchParams.set('type', type);
+  } else {
+    url.searchParams.delete('type');
+  }
+  window.history.pushState({}, '', url);
+};
+
+const getTypeFromUrl = (): TypeFilter => {
+  const type = new URLSearchParams(window.location.search).get('type');
+  return type === 'tool' || type === 'skill' ? type : null;
+};
+
 // Function to get tag from URL query parameters
 const getTagFromUrl = (): string | null => {
   const params = new URLSearchParams(window.location.search);
@@ -69,6 +91,7 @@ function App() {
   const [tools, setTools] = useState<Tool[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedType, setSelectedType] = useState<TypeFilter>(getTypeFromUrl);
   const [allTags, setAllTags] = useState<string[]>([]);
   const [popularTags, setPopularTags] = useState<string[]>([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -211,8 +234,9 @@ function App() {
       tool.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     
     const matchesTag = selectedTag === null || tool.tags.includes(selectedTag);
+    const matchesType = selectedType === null || getEntryType(tool) === selectedType;
     
-    return matchesSearch && matchesTag;
+    return matchesSearch && matchesTag && matchesType;
   });
 
   // Handle search input change
@@ -229,10 +253,26 @@ function App() {
     setCurrentPage(1); // Reset to first page on tag change
   };
 
+  // Handle the All / Tools / Skills switch with URL update
+  const handleTypeSelect = (type: TypeFilter) => {
+    setSelectedType(type);
+    updateUrlWithType(type);
+    setCurrentPage(1);
+  };
+
+  const skillCount = tools.filter(tool => getEntryType(tool) === 'skill').length;
+
   // Clear all filters with URL update
   const clearFilters = () => {
     setSelectedTag(null);
-    updateUrlWithTag(null);
+    setSelectedType(null);
+    // Remove both filters in one history entry, so Back restores the previous selection
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('tag') || url.searchParams.has('type')) {
+      url.searchParams.delete('tag');
+      url.searchParams.delete('type');
+      window.history.pushState({}, '', url);
+    }
     setSearchTerm('');
     setCurrentPage(1);
   };
@@ -248,6 +288,8 @@ function App() {
     const handlePopState = () => {
       const urlTag = getTagFromUrl();
       setSelectedTag(urlTag);
+      setSelectedType(getTypeFromUrl());
+      setCurrentPage(1); // The restored filters may have fewer pages
     };
     
     window.addEventListener('popstate', handlePopState);
@@ -287,6 +329,32 @@ function App() {
 
         {/* Container with fixed width to prevent layout shifts */}
         <div className="w-full mb-8">
+          {/* All / Tools / Skills switch, shown once the list has at least one AI agent skill */}
+          {skillCount > 0 && (
+            <div className="mb-3 flex justify-center">
+              <div className="inline-flex rounded-full border border-border p-1" role="group" aria-label="Show tools or AI agent skills">
+                {([
+                  [null, 'All'],
+                  ['tool', 'Tools'],
+                  ['skill', `AI agent skills (${skillCount})`],
+                ] as [TypeFilter, string][]).map(([type, label]) => (
+                  <button
+                    key={label}
+                    onClick={() => handleTypeSelect(type)}
+                    aria-pressed={selectedType === type}
+                    className={`px-4 py-1 rounded-full text-sm transition-colors ${
+                      selectedType === type
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Enhanced SearchBar with integrated filters */}
           <div className="w-full">
             <SearchBar 
@@ -336,7 +404,7 @@ function App() {
           </div>
           
           {/* Clear filters button - only visible when filters are active */}
-          {(selectedTag || searchTerm) && (
+          {(selectedTag || searchTerm || selectedType) && (
             <div className="flex justify-end mt-2">
               <button 
                 onClick={clearFilters}
@@ -418,7 +486,7 @@ function App() {
                 />
                 
                 <div className="text-center mt-4 text-sm text-muted-foreground">
-                  Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredTools.length)} of {filteredTools.length} tools
+                  Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredTools.length)} of {filteredTools.length} {selectedType === 'skill' ? 'skills' : 'tools'}
                 </div>
               </div>
             ) : (
@@ -429,7 +497,7 @@ function App() {
                   </svg>
                   <h3 className="text-lg font-medium mb-2">No results found</h3>
                   <p className="text-muted-foreground">No tools found matching your search criteria. Try adjusting your search or filters.</p>
-                  {searchTerm || selectedTag ? (
+                  {searchTerm || selectedTag || selectedType ? (
                     <button 
                       onClick={clearFilters}
                       className="mt-4 px-4 py-2 rounded-md text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
