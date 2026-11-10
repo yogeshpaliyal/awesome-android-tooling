@@ -1,0 +1,13 @@
+{
+  "name": "Mobilebox",
+  "description": "Cloud Android phones that AI agents drive over a hosted MCP server or REST API: install an APK, read the screen as numbered elements, tap, type and swipe, and take screenshots. Parked phones keep their apps and logins. Paid service, billed per minute; new workspaces get free starter credit.",
+  "link": "https://mobilebox.dev",
+  "authorName": "fifteenA",
+  "authorLink": "https://github.com/fifteenA",
+  "tags": [
+    "testing",
+    "emulator",
+    "automation",
+    "ai"
+  ]
+}
