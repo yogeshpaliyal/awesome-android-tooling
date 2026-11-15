@@ -1,0 +1,12 @@
+{
+  "name": "BenchFleet",
+  "description": "Control many real Android phones from one desktop app, run workflows and Maestro or Appium test suites on them, and give AI agents access through an MCP server. Cloud phones can be rented by the minute (account required).",
+  "link": "https://benchfleet.com",
+  "authorName": "BenchFleet",
+  "authorLink": "https://github.com/benchfleet",
+  "tags": [
+    "testing",
+    "automation",
+    "adb"
+  ]
+}
