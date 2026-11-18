@@ -1,0 +1,8 @@
+{
+  "name": "Apparent Android SDK",
+  "description": "Analytics SDK for Android apps: screens (Compose included), events, purchases through Play Billing or RevenueCat, and crashes, with an offline queue. No advertising id, no Google Play services, only the Kotlin standard library. Reports to Apparent, which can also show Google Play reviews and sales.",
+  "link": "https://github.com/AhmedAshour/apparent-sdks/tree/main/kotlin",
+  "authorName": "Apparent",
+  "authorLink": "https://apparent.fyi",
+  "tags": ["analytics", "sdk", "jetpack-compose", "google-play"]
+}
