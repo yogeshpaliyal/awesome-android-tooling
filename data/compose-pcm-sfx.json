@@ -1,0 +1,14 @@
+{
+  "name": "Compose PCM SFX",
+  "description": "MIT-licensed pure-Kotlin procedural 16-bit PCM AudioTrack library and Jetpack Compose demo with 9 presets (tap, confirm, error, chime, victory, coin, laser, card flip, pop), ADSR envelopes, and zero bundled audio assets.",
+  "link": "https://github.com/simple-free-apps/compose-pcm-sfx",
+  "authorName": "simple-free-apps",
+  "authorLink": "https://github.com/simple-free-apps",
+  "tags": [
+    "jetpack-compose",
+    "library",
+    "ui",
+    "resources",
+    "audio"
+  ]
+}
