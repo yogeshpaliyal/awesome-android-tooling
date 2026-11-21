@@ -1,0 +1,8 @@
+{
+  "name": "Foldshots",
+  "description": "Free browser tool for the foldable screenshots Google Play requires from April 2027: 1:1 and 4:3 unfolded inner screens and a 10:16 folded outer screen. It frames your emulator or device captures at the right sizes and lists the specs and emulator commands; images are processed in the browser.",
+  "link": "https://foldshots.onetagai.com",
+  "authorName": "Max Feng",
+  "authorLink": "https://github.com/fengyiqicoder",
+  "tags": ["screenshot", "google-play", "design", "ui"]
+}
