@@ -1,0 +1,13 @@
+{
+  "name": "BetaDrop",
+  "description": "Web service that turns an Android .apk into an install link and QR code, so testers can install a debug or release build from their phone's browser without a Play Console testing track or a Google account. Builds can also be uploaded from CI with its command-line tool.",
+  "link": "https://betadrop.app/upload-apk/",
+  "authorName": "Immersive Mobile Designs",
+  "authorLink": "https://betadrop.app/about/",
+  "tags": [
+    "apk",
+    "testing",
+    "installation",
+    "command-line"
+  ]
+}
