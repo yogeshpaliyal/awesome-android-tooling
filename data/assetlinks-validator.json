@@ -1,0 +1,14 @@
+{
+  "name": "AssetLinks Validator",
+  "description": "Browser tool for Android App Links: generates assetlinks.json, fixes SHA-256 fingerprint formatting, validates a pasted file, and shows what Google's Digital Asset Links API returns for your domain.",
+  "link": "https://bestlatestapps.com/tools/assetlinks-validator/",
+  "authorName": "Best Latest Apps",
+  "authorLink": "https://bestlatestapps.com/",
+  "tags": [
+    "app-links",
+    "deep-linking",
+    "assetlinks",
+    "debugging",
+    "web"
+  ]
+}
