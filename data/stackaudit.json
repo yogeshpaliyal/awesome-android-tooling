@@ -1,0 +1,14 @@
+{
+  "name": "StackAudit",
+  "description": "Debug inspector for Android, Kotlin Multiplatform, iOS and Flutter: OkHttp, WebSocket, SharedPreferences, Room, analytics and feature flags, with secrets masked on the device. No-op artifacts for release builds.",
+  "link": "https://github.com/r1b2ns/stack-audit",
+  "authorName": "r1b2ns",
+  "authorLink": "https://github.com/r1b2ns",
+  "tags": [
+    "debugging",
+    "inspection",
+    "http-requests",
+    "okhttp",
+    "library"
+  ]
+}
