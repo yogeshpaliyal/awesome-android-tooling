@@ -1,0 +1,13 @@
+{
+    "name": "Device Changer",
+    "description": "Android QA tool that runs on one real rooted phone and applies a device profile across the whole phone, setting model, brand, manufacturer, build fingerprint, related build details and display size, for repeatable compatibility testing. A paid license is required.",
+    "link": "https://deviceschanger.org/documentation",
+    "authorName": "Device Changer",
+    "authorLink": "https://deviceschanger.org",
+    "tags": [
+        "testing",
+        "debugging",
+        "device-simulation",
+        "qa"
+    ]
+}
