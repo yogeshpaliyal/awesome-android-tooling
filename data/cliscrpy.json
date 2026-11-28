@@ -1,0 +1,14 @@
+{
+  "name": "cliscrpy",
+  "description": "A command-line tool on top of scrcpy and adb for testing on several phones at once: mirror them by name, then install or uninstall APKs, open deep links, clear app data, take screenshots and run adb shell commands on every device in parallel. Linux and macOS.",
+  "link": "https://github.com/nerdcuba/cliscrpy",
+  "authorName": "nerdcuba",
+  "authorLink": "https://github.com/nerdcuba",
+  "tags": [
+    "command-line",
+    "mirroring",
+    "testing",
+    "adb",
+    "screenshot"
+  ]
+}
